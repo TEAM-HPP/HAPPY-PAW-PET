@@ -10,12 +10,12 @@ import com.java.dto.diagnosis.PetDiagnosisDto;
 public class PetDiagnosisServiceimpl implements PetDiagnosisService {
 
 	@Autowired PetDiagnosisDao pdDao;
-	
-	
+
+
 	@Override  //진단설문지 작성 저장
-	public void insertPetDagnosisDB(PetDiagnosisDto petdiagnosisDto) {
-		
-		pdDao.insertPetDagnosisDB(petdiagnosisDto);
+	public void insertPetDiagnosisDB(PetDiagnosisDto petdiagnosisDto) {
+
+		pdDao.insertPetDiagnosisDB(petdiagnosisDto);
 	}
 
 }

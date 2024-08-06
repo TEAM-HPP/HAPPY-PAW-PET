@@ -8,6 +8,6 @@ import com.java.dto.diagnosis.PetDiagnosisDto;
 public interface PetDiagnosisDao {
 
 	//진단 설문지 작성 저장
-	void insertPetDagnosisDB(PetDiagnosisDto petdiagnosisDto);
+	void insertPetDiagnosisDB(PetDiagnosisDto petdiagnosisDto);
 
 }
