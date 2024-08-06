@@ -1,117 +1,141 @@
 @charset "UTF-8";
-        
+
 footer {
-	display: flex;
-	bottom: 0;
-	font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
     position: relative;
-    overflow: hidden;
+    bottom: 0;
     width: 100%;
-    height: 300px;
+    height: 250px;
     background: black;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", "Nanum Gothic", sans-serif, 'Inter';
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
- .section1 {
-    position: relative;
+#logo {
     display: flex;
-    left: 35%;
-    top: 25%;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: left;
 }
 
-.section1 > div {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 900;
+img {
+    width: 290px;
+    height: auto;
+    padding-right: 200px;
+}
+
+#text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 1000px;
+    align-items: left;
+}
+
+#main_text {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+    align-items: left;
+}
+
+#main_text a {
+    color: #FFFFFF;
     font-size: 25px;
-    line-height: 30px;
-    color: #FFFFFF;
-    margin-left: 20px;
-    max-width: 230px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    border-bottom: 1px solid white;
 }
 
-.section1 .introduction {
-    position: absolute;
-    width: 250px;
-    height: 32px;
-    left: 9px;
-    top: 3px;
+#main_text a:hover {
+    color: #CCCCCC;
 }
 
-.section1 .privacy-policy{ 
-    position: absolute;
-    width: 200px;
-    height: 32px;
-    left: 300px;
-    top: 3px;
-}
-.section1 .terms{ 
-    position: absolute;
-    width: 150px;
-    height: 32px;
-    left: 570px;
-    top: 3px;
-}
-.section1 .notice {
-    position: absolute;
-    width: 150px;
-    height: 32px;
-    left: 750px;
-    top: 3px;
-}
-
-.section2 {
-    position: relative;
-    width: 506px;
-    height: 80px;
-    top: 45%;
-    left: 35%;
-    margin-left: 30px;
-}
-
-.section2 .company-info {
-    position: absolute;
-    width: 663px;
-    height: 18px;
-    left: calc(50% - 663px/2 + 78.5px);
-    top: 6px;
-    font-size: 15px;
-    line-height: 18px;
-    color: #FFFFFF;
-}
-
-.section2 .business-license {
-    position: absolute;
-    width: 216px;
-    height: 18px;
-    left: 1px;
-    top: 31px;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: justify;
-    color: #FFFFFF;
-}
-
-.section2 .address {
-    position: absolute;
-    width: 437px;
-    height: 18px;
-    left: 1px;
-    top: 56px;
-    font-size: 15px;
-    line-height: 18px;
-    color: #FFFFFF;
-}
-
-.images {
-    position: absolute;
-    top: 33px;
-    width: 349px;
-    height: 289px;
+#sub_text {
     margin-top: 10px;
-    background: url('/image/footerLogo.png') no-repeat; /*로고 넣을 곳*/
-    background-repeat: no-repeat;
-    background-size: auto;
-    left: 250px;
+    font-size: 15px;
+    line-height: 1.6;
+    align-items: left;
+}
+
+#company-info,
+#business-license,
+#address {
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+/* 모달 배경 */
+.privacy_modal, .terms_modal{
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 화면에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#privacy_pop, #terms_pop{
+    width:500px; height:650px; padding:40px; text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px 0 rgba(34,36,38,0.15);
+}
+
+h2 {
+    padding-bottom: 10px;
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 1.5px;
+}
+
+#privacy_button, #terms_button{
+    position: relative;
+}
+
+#privacy_mbtn, #terms_mbtn{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#privacy_mbtn:hover, #terms_mbtn:hover {
+    background-color: #0056b3;
+}
+
+/* 텍스트 영역 스타일 */
+textarea {
+    width: 400px;
+    height: 425px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    resize: none; /* 사용자가 크기 조절하지 못하도록 */
+    margin-bottom: 20px;
 }
