@@ -18,7 +18,7 @@
 	</select>
 	<!-- happymem 회원가입 -->
 	<insert id="joinMem">
-		insert into happymem (id, pw, name, birth, gender, phone, email, profile, age) 
+		insert into happymem (id, pw, name, birth, gender, phone, email, profile, age)
 		values (#{id}, #{pw2}, #{name}, #{birth}, #{genderC}, #{fullTell}, #{fullEmail}, 'default.jpg', EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM #{birth}))
 	</insert>
 	<update id="updatePwcode">
@@ -30,7 +30,7 @@
 	</select>
 	<!-- 회원 정보 수정 후 업데이트 -->
 	<update id="doUpdateMem">
-		update happymem 
+		update happymem
 		set pw=#{pw}, birth=#{birth}, gender=#{gender}, phone=#{phone}, email=#{email} ,age=EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM #{birth})
 		where id=#{id}
 	</update>
@@ -43,7 +43,7 @@
 	<select id="memList" resultType="com.java.dto.MemberDto">
 		select * from happymem
 	</select>
-	
+
 	<!-- happymem 회원탈퇴 -->
 	<delete id="deleteMem">
 		delete from happymem where id=#{id} and name=#{name}
@@ -52,7 +52,7 @@
 	<select id="memView" resultType="com.java.dto.MemberDto">
 		select * from happymem where id=#{id}
 	</select>
-	
+
 
 
 </mapper>

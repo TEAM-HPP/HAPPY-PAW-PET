@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-#admin{height: 100%;}       
-section{position: relative; top:100px; left:0; min-height:500px;; 
+#admin{height: 100%;}
+section{position: relative; top:100px; left:0; min-height:500px;;
 	background-color: #FAF7F0; flex:1; display: flex}
 
 button[type="button"]{ cursor: pointer;}
@@ -10,120 +10,138 @@ button[type="button"]{ cursor: pointer;}
 /*-----------------------------------------------------------------------------*/
 
 .main{position: relative;
-    width: 80%;
-    margin-left: 310px;
-    padding-top: 40px;
-    padding-left: 40px;
-    box-sizing: border-box;}
-    
+	width: 80%;
+	margin-left: 310px;
+	padding-top: 40px;
+	padding-left: 40px;
+	box-sizing: border-box;}
+
 .main > h2{ font-size: 28px; color: #342F2F; text-align: left;
-            font-family: Roboto;
-            font-optical-sizing: auto;
-            font-style: normal; }
+	font-family: Roboto;
+	font-optical-sizing: auto;
+	font-style: normal; }
 .main > h2 > span { font-weight: 550; border-bottom: 1px solid rgb(209, 209, 209);}
 
-.member > h4{ width : 100%; height :  30px; color: #333; 
-			font-size: 18px;
-            font-weight: 600;
-            box-sizing: border-box;
-            margin : 0 auto; margin-bottom: 10px;
-            padding: 0 0 10px 10px; }
+.servTime{
+	margin-top: 30px; margin-bottom: 30px;
+}
+
+.servTime > h2{
+	width: 100%;
+	font-size: 20px;
+	font-weight: 600;
+	box-sizing: border-box;
+	margin : 15px auto 0 auto;
+	padding: 0 0 0 10px;
+}
+.servTime > span {
+	width: 100%; margin : 0 auto; padding: 0 0 10px 10px;
+	font-size: 28px; color: blue;
+	font-weight: 600;
+}
+
+.member > h4{ width : 100%; height :  30px; color: #333;
+	font-size: 18px;
+	font-weight: 600;
+	box-sizing: border-box;
+	margin : 0 auto; margin-bottom: 10px;
+	padding: 0 0 10px 10px; }
 .member > h4 > span { font-size: 13px; color: #555;}
 .member{margin-top: 45px; margin-bottom: 30px;}
 .member > button{ margin-top: 10px; width:90px; height: 40px; background: #342F2F; color: white; font-size: 12px;
-            font-weight: 550; border: none; position: relative; left: 1390px;}
+	font-weight: 550; border: none; position: relative; left: 1390px;}
 
 #mem {
-		display: table;
-	    width: 100%;
-	    font-size: 15px;
-	    margin: 0 auto;
-	    margin-bottom: 15px;
-	    border-collapse: collapse;
-	    background-color: rgb(246, 246, 246);
+	display: table;
+	width: 100%;
+	font-size: 15px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	border-collapse: collapse;
+	background-color: rgb(246, 246, 246);
 }
 #mem > tr,td {border : 1px solid rgb(209,209,209); height: 25px; }
 #mem > thead { font-size: 15px; text-align: center; border-left: 1px solid rgb(209,209,209);
-			background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
+	background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
 
 
 
 /*-----------------------------------------------------------------------------*/
 
-.petlist > h4{ width : 100%; height :  30px; color: #333; 
-			font-size: 18px;
-            font-weight: 600;
-            box-sizing: border-box;
-            margin : 0 auto; margin-bottom: 10px;
-            padding: 0 0 10px 10px; }
+.petlist > h4{ width : 100%; height :  30px; color: #333;
+	font-size: 18px;
+	font-weight: 600;
+	box-sizing: border-box;
+	margin : 0 auto; margin-bottom: 10px;
+	padding: 0 0 10px 10px; }
 .petlist > h4 > span { font-size: 13px; color: #555;}
 .petlist{margin-top: 45px; margin-bottom: 30px;}
 .petlist > button{ margin-top: 10px; width:110px; height: 40px; background: #342F2F; color: white; font-size: 12px;
-            font-weight: 550; border: none; position: relative; left: 1370px;}
+	font-weight: 550; border: none; position: relative; left: 1370px;}
 #pet {
-		display: table;
-	    width: 100%;
-	    font-size: 15px;
-	    margin: 0 auto;
-	    margin-bottom: 15px;
-	    border-collapse: collapse;
-	    background-color: rgb(246, 246, 246);
+	display: table;
+	width: 100%;
+	font-size: 15px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	border-collapse: collapse;
+	background-color: rgb(246, 246, 246);
 }
 #pet > tr,td {border : 1px solid rgb(209,209,209); height: 25px; padding-left: 10px;}
 #pet > thead { font-size: 15px; text-align: center; border-left: 1px solid rgb(209,209,209);
-			background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
+	background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
 
 /*-----------------------------------------------------------------------------*/
-.boardlist > h4{ width : 100%; height :  30px; color: #333; 
-			font-size: 18px;
-            font-weight: 600;
-            box-sizing: border-box;
-            margin : 0 auto; margin-bottom: 10px;
-            padding: 0 0 10px 10px; }
+.boardlist > h4{ width : 100%; height :  30px; color: #333;
+	font-size: 18px;
+	font-weight: 600;
+	box-sizing: border-box;
+	margin : 0 auto; margin-bottom: 10px;
+	padding: 0 0 10px 10px; }
 .boardlist > h4 > span { font-size: 13px; color: #555;}
 .boardlist{margin-top: 45px; margin-bottom: 30px;}
 .boardlist > button{ margin-top: 10px; width:110px; height: 40px; background: #342F2F; color: white; font-size: 12px;
-            font-weight: 550; border: none; position: relative; left: 1370px;}
+	font-weight: 550; border: none; position: relative; left: 1370px;}
 #board {
-		display: table;
-	    width: 100%;
-	    font-size: 15px;
-	    margin: 0 auto;
-	    margin-bottom: 15px;
-	    border-collapse: collapse;
-	    background-color: rgb(246, 246, 246);
+	display: table;
+	width: 100%;
+	font-size: 15px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	border-collapse: collapse;
+	background-color: rgb(246, 246, 246);
 }
 #board > tr,td {border : 1px solid rgb(209,209,209); height: 25px; padding-left: 10px;}
 #board > thead { font-size: 15px; text-align: center; border-left: 1px solid rgb(209,209,209);
-			background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
+	background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
 
 
 #content {
 	max-width: 270px; /* 원하는 최대 너비를 설정하세요 */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 /*-----------------------------------------------------------------------------*/
-.qnalist > h4{ width : 100%; height :  30px; color: #333; 
-			font-size: 18px;
-            font-weight: 600;
-            box-sizing: border-box;
-            margin : 0 auto; margin-bottom: 10px;
-            padding: 0 0 10px 10px; }
+.qnalist > h4{ width : 100%; height :  30px; color: #333;
+	font-size: 18px;
+	font-weight: 600;
+	box-sizing: border-box;
+	margin : 0 auto; margin-bottom: 10px;
+	padding: 0 0 10px 10px; }
 .qnalist > h4 > span { font-size: 13px; color: #555;}
 .qnalist{margin-top: 45px; margin-bottom: 30px;}
 .qnalist > button{ margin-top: 10px; width:110px; height: 40px; background: #342F2F; color: white; font-size: 12px;
-            font-weight: 550; border: none; position: relative; left: 1370px;}
+	font-weight: 550; border: none; position: relative; left: 1370px;}
 #qna {
-		display: table;
-	    width: 100%;
-	    font-size: 15px;
-	    margin: 0 auto;
-	    margin-bottom: 15px;
-	    border-collapse: collapse;
-	    background-color: rgb(246, 246, 246);
+	display: table;
+	width: 100%;
+	font-size: 15px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	border-collapse: collapse;
+	background-color: rgb(246, 246, 246);
 }
 #qna > tr,td {border : 1px solid rgb(209,209,209); height: 25px; padding-left: 10px;}
 #qna > thead { font-size: 15px; text-align: center; border-left: 1px solid rgb(209,209,209);
-			background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
+	background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}

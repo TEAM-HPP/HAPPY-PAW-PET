@@ -9,7 +9,7 @@ import com.java.service.FlaskClient;
 
 @SpringBootApplication
 @MapperScan("com.java.dao")
-public class HappyPawPetApplication implements CommandLineRunner {
+public class HappyPawPetApplication {
 
 	@Autowired
 	private FlaskClient flaskClient;
@@ -18,8 +18,8 @@ public class HappyPawPetApplication implements CommandLineRunner {
 		SpringApplication.run(HappyPawPetApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception { // 가변인수
-		flaskClient.callFlaskApi();
-	}
+//	@Override
+//	public void run(String... args) throws Exception { // 가변인수
+//		flaskClient.callFlaskApi();
+//	}
 }

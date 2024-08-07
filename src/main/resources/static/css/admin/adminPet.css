@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
-#admin{height: 100%;}       
+#admin{height: 100%;}
 section{position: relative; top:100px; left:0; min-height:850px;
-	background-color: #FAF7F0; flex:1; display: flex}
+    background-color: #FAF7F0; flex:1; display: flex}
 
 button[type="button"]{ cursor: pointer;}
 
 
 #s03 { background-color : rgb(209, 209, 209);
-						> a {color: black;};}				
+    > a {color: black;};}
 
 /*---------------------------------------------------------*/
 
@@ -18,49 +18,75 @@ button[type="button"]{ cursor: pointer;}
     padding-top: 40px;
     padding-left: 40px;
     box-sizing: border-box;}
-    
+
 .main > h2{ font-size: 28px; color: #342F2F; text-align: left;
-            font-family: Roboto;
-            font-optical-sizing: auto;
-            font-style: normal; }
+    font-family: Roboto;
+    font-optical-sizing: auto;
+    font-style: normal; }
 .main > h2 > span { font-weight: 550; border-bottom: 1px solid rgb(209, 209, 209);}
 
 
-.petlist > h4{ width : 100%; height :  30px; color: #333; 
-			font-size: 18px;
-            font-weight: 600;
-            box-sizing: border-box;
-            margin : 0 auto; margin-bottom: 10px;
-            padding: 0 0 10px 10px; }
+.animalList > h4{ width : 100%; height :  30px; color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    box-sizing: border-box;
+    margin : 0 auto; margin-bottom: 5px;
+    padding: 0 0 10px 10px; }
+.animalList > h4 > span { font-size: 18px; font-weight: 600;}
+.animalList{margin-top: 45px; margin-bottom: 30px;}
+
+.filters {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.filters select, .filters button {
+    padding: 8px;
+    margin: 5px;
+}
+
+.filters button{
+    background-color: black; color: white;
+    font-size: 14px; font-weight: 550;
+    width: 70px;
+}
+
+.container {
+    display:none;
+    width: 100%;
+    height: 270px; ;
+}
+
+
+.petlist > h4{ width : 100%; height :  30px; color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    box-sizing: border-box;
+    margin : 0 auto; margin-bottom: 10px;
+    padding: 0 0 10px 10px; }
 .petlist > h4 > span { font-size: 13px; color: #555;}
 .petlist{margin-top: 45px; margin-bottom: 30px;}
 .petlist > button{ margin-top: 10px; width:90px; height: 40px; background: #342F2F; color: white; font-size: 12px;
-            font-weight: 550; border: none; position: relative; left: 1430px;}
+    font-weight: 550; border: none; position: relative; left: 1430px;}
 
 #pet {
-		display: table;
-	    width: 100%;
-	    font-size: 15px;
-	    margin: 0 auto;
-	    margin-bottom: 15px;
-	    border-collapse: collapse;
-	    background-color: rgb(246, 246, 246);
+    display: table;
+    width: 100%;
+    font-size: 15px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border-collapse: collapse;
+    background-color: rgb(246, 246, 246);
 }
 #pet > tr,td {border : 1px solid rgb(209,209,209); height: 25px;
-				padding-left: 10px;}
+    padding-left: 10px;}
 #pet > thead { font-size: 15px; text-align: center; border-left: 1px solid rgb(209,209,209);
-			background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
+    background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
 
 #button {padding-top: 2px; padding-bottom: 2px; padding-left: 55px;}
 
 #memInfo { width: 100px; height: 25px; background: black;  text-align: center;
-			border-radius: 5px;
- }
+    border-radius: 5px;
+}
 
 #memInfo > a { display: block; width: 100px; height: 25px; color: white; font-size: 15px; font-weight: 550; }
-
-
-
-
-
-

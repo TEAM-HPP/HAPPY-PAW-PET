@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -146,41 +145,6 @@ public class AbandonedServiceImpl implements AbandonedService {
         return animalList;
     }
 
-    // XML 데이터를 파싱하여 특정 유기동물의 정보를 반환합니다.
-    private Map<String, String> parseAnimalData(String xmlData, String targetDesertionNo) throws Exception {
-        Document doc = parseXmlDocument(xmlData);
-        NodeList itemList = doc.getElementsByTagName("item");
-
-        for (int i = 0; i < itemList.getLength(); i++) {
-            Element item = (Element) itemList.item(i);
-            String desertionNo = getElementValue(item, "desertionNo");
-
-            if (desertionNo.equals(targetDesertionNo)) {
-                Map<String, String> animalMap = new HashMap<>();
-                animalMap.put("desertionNo", desertionNo);
-                animalMap.put("kindCd", getElementValue(item, "kindCd"));
-                animalMap.put("colorCd", getElementValue(item, "colorCd"));
-                animalMap.put("age", getElementValue(item, "age"));
-                animalMap.put("weight", getElementValue(item, "weight"));
-                animalMap.put("processState", getElementValue(item, "processState"));
-                animalMap.put("sexCd", getElementValue(item, "sexCd"));
-                animalMap.put("neuterYn", getElementValue(item, "neuterYn"));
-                animalMap.put("specialMark", getElementValue(item, "specialMark"));
-                animalMap.put("careNm", getElementValue(item, "careNm"));
-                animalMap.put("careTel", getElementValue(item, "careTel"));
-                animalMap.put("careAddr", getElementValue(item, "careAddr"));
-                animalMap.put("popfile", getElementValue(item, "popfile"));
-
-                System.out.println("Found animal data: " + animalMap); // Debug log for found animal data
-                return animalMap; // 데이터가 일치하면 반환
-            }
-        }
-
-        System.out.println("No matching data for desertionNo: " + targetDesertionNo); // Debug log for no matching data
-        return null;
-    }
-
-
     // XML 데이터를 파싱하여 시도 목록을 반환합니다.
     private List<Map<String, String>> parseSidoData(String xmlData) throws Exception {
         Document doc = parseXmlDocument(xmlData);
@@ -190,8 +154,10 @@ public class AbandonedServiceImpl implements AbandonedService {
         for (int i = 0; i < itemList.getLength(); i++) {
             Element item = (Element) itemList.item(i);
             Map<String, String> sidoMap = new HashMap<>();
+
             sidoMap.put("orgCd", getElementValue(item, "orgCd"));
             sidoMap.put("orgdownNm", getElementValue(item, "orgdownNm"));
+
             sidoList.add(sidoMap);
         }
 
