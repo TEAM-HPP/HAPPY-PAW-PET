@@ -11,28 +11,59 @@
 		<link rel="stylesheet" type="text/css" href="/css/login/login.css" />
 		<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 		<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	  	<script>
-				$(function(){
-					$(".sbtn").click(function(){
-						var idChk = $("#saveCheckbox").is(":checked") ; //아이디 저장이 체크되었는지 담아준다.
-						var id = $("#id").val();
-						var pw = $("#pw").val();
-						
-						//alert("로그인 진행");
-						if(id == ""){
-							alert("아이디를 입력하셔야 합니다.");
-							$("#id").focus();
-							return false;
-						}else if(pw == ""){
-							alert("패스워드를 입력하셔야 합니다.");
-							$("#pw").focus();
-							return false;
-						}
-						
-						loginFrm.submit(); //form 형태로 controller로 입력값을 보냄
-						
-					});
+		<script>
+			// 쿠키를 설정하는 함수
+			function setCookie(name, value, days) {
+				const d = new Date();
+				d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+				let expires = "expires=" + d.toUTCString();
+				document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+			}
+			// 쿠키를 가져오는 함수
+			function getCookie(name) {
+				let nameEQ = name + "=";
+				let ca = document.cookie.split(';');
+				for (let i = 0; i < ca.length; i++) {
+					let c = ca[i];
+					while (c.charAt(0) === ' ') c = c.substring(1);
+					if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+				}
+				return null;
+			}
+			// 쿠키를 삭제하는 함수
+			function deleteCookie(name) {
+				const d = new Date();
+				d.setTime(d.getTime() - 1);
+				let expires = "expires=" + d.toUTCString();
+				document.cookie = name + "=; " + expires + "; path=/";
+			}
+			// 로그인 폼 제출 시 쿠키 설정 및 삭제
+			document.addEventListener("DOMContentLoaded", function() {
+				// 로그인 폼이 제출될 때 호출되는 함수
+				document.getElementById("loginForm").addEventListener("submit", function(event) {
+					const remember = document.getElementById("saveCheckbox").checked;
+					const userId = document.getElementById("id").value;
+					if (remember) {
+						setCookie("userId", userId, 1); // 1일 동안 쿠키 유지
+					} else {
+						deleteCookie("userId");
+					}
 				});
+				// 페이지 로드 시 쿠키 값 설정
+				const savedId = getCookie("userId");
+				if (savedId) {
+					document.getElementById("saveCheckbox").checked = true;
+					document.getElementById("id").value = savedId;
+				}
+			});
+			// 페이지에서 쿠키 값 출력
+			function printCookies() {
+				let cookies = document.cookie.split(';');
+				cookies.forEach(cookie => {
+					let [name, value] = cookie.split('=');
+					console.log("쿠키 이름: " + name.trim() + " - 값: " + (value ? value.trim() : "없음"));
+				});
+			}
 		</script>
 		<title>HappyPawPet 로그인창</title>
 	</head>

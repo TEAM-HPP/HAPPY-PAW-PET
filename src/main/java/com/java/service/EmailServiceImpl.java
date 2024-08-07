@@ -63,6 +63,54 @@ public class EmailServiceImpl implements EmailService {
 		System.out.println("이메일 발송 완료");
 		
 	}
+
+	@Override //회원가입 환영 이메일
+	public void welcome_email_send(String id, String name, String fullEmail) {
+		//html 형식으로 갖추어 보내기
+		System.out.println(id);
+		System.out.println(name);
+		System.out.println(fullEmail);
+		MimeMessage message = mailSender.createMimeMessage();
+		try {
+			message.setSubject("[HappyPawPet]"+name+"님의 회원가입을 진심으로 환영합니다.","utf-8");
+			String htmlData = "<table style='width: 100%; max-width: 600px; height: 700px; margin: 20px auto; background: #FFFFFF; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);' cellpadding='0' cellspacing='0'>\r\n"
+					+ "<tr>\r\n"
+					+ "<td style='background: black; color: #FFFFFF; padding: 20px; display: flex; align-items: center;'>\r\n"
+					+ "<img src='http://localhost:8181/image/HappyPawPet.png' style='width: 180px; height: auto; margin: 0px 30px;' alt='로고'>\r\n"
+					+ "<div style='flex: 1; text-align: center; font-size: 24px; font-weight: 800; letter-spacing: 2px;'>\r\n"
+					+ "<h1 style='margin: 0;'>환영합니다!</h1>\r\n"
+					+ "</div>\r\n"
+					+ "</td>\r\n"
+					+ "</tr>\r\n"
+					+ "<tr>\r\n"
+					+ "<td style='padding: 20px;'>\r\n"
+					+ "<p style='font-size: 16px; line-height: 1.5; font-weight: 600; text-align: center;'>안녕하세요, " + name + "님!</p>\r\n"
+					+ "<p style='font-size: 16px; line-height: 1.5; font-weight: 600; text-align: center;'>회원가입을 축하드립니다.</p>\r\n"
+					+ "<p style='font-size: 16px; line-height: 1.5; font-weight: 600; text-align: center;'>이제 HappyPawPet의 모든 기능을 이용하실 수 있습니다.</p>\r\n"
+					+ "<p style='font-size: 16px; line-height: 1.5; font-weight: 600; text-align: center;'>아래 버튼을 클릭하여 지금 바로 시작해 보세요!</p>\r\n"
+					+ "<div style='text-align: center;'>\r\n"
+					+ "<a href='http://localhost:8181' style='display: inline-block; background-color: black; color: #FFFFFF; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: 800; text-align: center; margin: 10px auto; width: 200px;'>시작하기</a>\r\n"
+					+ "</div>\r\n"
+					+ "<p style='font-size: 16px; line-height: 1.5; font-weight: 600; text-align: center;'>HappyPawPet은 고객님께 더 나은 서비스를 제공하기 위해 <br>항상 노력하겠습니다.<br/>앞으로 많은 관심 부탁드립니다.</p>\r\n"
+					+ "</td>\r\n"
+					+ "</tr>\r\n"
+					+ "<tr>\r\n"
+					+ "<td style='padding: 10px; text-align: center; font-size: 14px; color: #777; letter-spacing: 1px;'>\r\n"
+					+ "<p>&copy; 상호 : HappyPawPet&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;대표자 : ***</p>\r\n"
+					+ "<p>주소 : (08378) 서울 구로구 디지털로34길 27 (구로동) 1106-7호</p>\r\n"
+					+ "</td>\r\n"
+					+ "</tr>\r\n"
+					+ "</table>\r\n";
+			message.setText(htmlData,"utf-8","html");
+			//보내는 이메일 주소
+			message.setFrom(new InternetAddress("ivy091412@gmail.com"));
+			//받는 이메일 주소
+			message.addRecipient(RecipientType.TO, new InternetAddress(fullEmail));
+			//이메일 전송
+			mailSender.send(message);
+		} catch (MessagingException e) { e.printStackTrace();} //제목
+
+	}
 		
 	//임시 비밀번호 생성
 	public String getCreateKey() {

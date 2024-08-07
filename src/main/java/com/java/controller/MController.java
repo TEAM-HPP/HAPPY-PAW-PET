@@ -191,8 +191,11 @@ public class MController {
         
 		//회원가입하기
 		memberService.joinMem(name,id,pw2,fullEmail,fullTell,birth,genderC);
-		
+		//회원가입 환영 이메일
+		emailService.welcome_email_send(id,name,fullEmail);
+
 		return "/login/welcome";
+
 	}
 	
 	
