@@ -4,10 +4,9 @@
 		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.java.dao.PetDiagnosisDao">
-	<!-- 진단 설문지 작성저장 -->
+	<!-- 진단 설문지 작성 저장 -->
 	<insert id="insertPetDiagnosisDB">
-		INSERT INTO petdiagnosis (dno,id,pname,pbirth,page,psex,psurgery,pweight,pbreed,condition,pfile,diagnosisdate,eye1,eye2,eye3, eye4,eye5,eyecolor,
-		skin1,skin2,skin3,skin4,skin5)
+		INSERT INTO petdiagnosis (dno, id, pname, pbirth, page, psex, psurgery, pweight, pbreed, condition, pfile, diagnosisdate, eye1, eye2, eye3, eye4, eye5, eyecolor, skin1, skin2, skin3, skin4, skin5)
 		VALUES (
 		diag_seq.nextval,
 		#{id},
@@ -22,12 +21,36 @@
 		#{pfile},
 		sysdate,
 		<if test="condition == 'eye'">
-			#{eye1}, #{eye2}, #{eye3}, #{eye4}, #{eye5}, #{eyecolor} ,0,0,0,0,0
+			#{eye1}, #{eye2}, #{eye3}, #{eye4}, #{eye5}, #{eyecolor}, 0, 0, 0, 0, 0
 		</if>
 		<if test="condition == 'skin'">
-			0,0,0,0,0,'none',#{skin1},#{skin2},#{skin3},#{skin4},#{skin5}
+			0, 0, 0, 0, 0, 'none', #{skin1}, #{skin2}, #{skin3}, #{skin4}, #{skin5}
 		</if>
 		)
 	</insert>
 
+	<!-- 질병에 따른 상품 정보 조회 -->
+	<select id="findProductsByDiseaseAndType" resultType="map">
+		SELECT * FROM (
+		SELECT * FROM diagnose
+		WHERE disease = #{disease} AND type = '사료'
+		ORDER BY dbms_random.value
+		) WHERE ROWNUM = 1
+
+		UNION ALL
+
+		SELECT * FROM (
+		SELECT * FROM diagnose
+		WHERE disease = #{disease} AND type = '안약'
+		ORDER BY dbms_random.value
+		) WHERE ROWNUM = 1
+
+		UNION ALL
+
+		SELECT * FROM (
+		SELECT * FROM diagnose
+		WHERE disease = #{disease} AND type = '영양제'
+		ORDER BY dbms_random.value
+		) WHERE ROWNUM = 1
+	</select>
 </mapper>

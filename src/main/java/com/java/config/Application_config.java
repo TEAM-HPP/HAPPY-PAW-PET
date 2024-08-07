@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class Application_config {
@@ -34,6 +35,12 @@ public class Application_config {
 			public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
 				return new SqlSessionTemplate(sqlSessionFactory); //mybatis에 사용할 1개 객체를 가져옴.
 			}
-			
-			
+
+			@Bean
+			public RestTemplate restTemplate() {
+				return new RestTemplate();
+			}
+
+
+
 }
