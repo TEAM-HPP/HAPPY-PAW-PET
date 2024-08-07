@@ -1,198 +1,131 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+		 pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 	<meta charset="UTF-8">
-	<title>Adog_ex</title>
+	<title>${animal.kindCd} - 상세 페이지</title>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/Adog_ex.css">
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/top.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/adoption/Adog_ex.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/footer.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d6a3e4e63ce6514f39f88e53f8535e7e&libraries=services"></script>
-    <style>
-    	.win_index {width: 250px; height: 80px; padding:5px;  text-align: center; display: block; background: #50627F; 
-    	color: #fff; text-align: center; line-height:22px;  border-radius:4px; padding-top: 23px; }
-    
-    </style>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d6a3e4e63ce6514f39f88e53f8535e7e&libraries=services"></script>
 </head>
 <body>
-<script>
-    $(function(){
-        $.ajax({
-            url: "public_data2",
-            type: "post",
-            data: {},
-            dataType: "json",
-            success: function(data) {
-                alert("성공");
+<%@ include file="../top/top.jsp" %>
 
-                // 데이터 처리
-                let arr = data.response.body.items.item; // 받은 데이터에서 필요한 배열 추출
-                let dataMap = {}; // desertionNo를 키로 하는 데이터 저장 객체
-
-                for (let i = 0; i < arr.length; i++) {
-                    let desertionNo = arr[i].desertionNo;
-                    if (!dataMap[desertionNo]) {
-                        dataMap[desertionNo] = {
-                            address: arr[i].careAddr,
-                            name: arr[i].careNm,
-                            tel: arr[i].careTel
-                        };
-                    }
-                }
-
-                // 중복 제거된 데이터 출력
-                console.log("중복 제거된 데이터:", dataMap);
-
-                // 주소 배열 추출
-                let uniqueAddresses = Object.values(dataMap).map(item => item.address);
-                console.log("중복 제거된 careAddr 목록:", uniqueAddresses);
-
-                // 주소-좌표 변환 및 마커 추가
-                convertAddressToCoords(uniqueAddresses, dataMap);
-            },
-            error: function(xhr, status, error) {
-                alert("실패");
-            }
-        });
-
-        function convertAddressToCoords(addresses, dataMap) {
-            var geocoder = new kakao.maps.services.Geocoder();
-            var mapContainer = document.getElementById('center_map');
-            var mapOption = { 
-                center: new kakao.maps.LatLng(37.4851520949372, 126.898809246391), // 지도의 중심좌표
-                level: 15 // 지도의 확대 레벨
-            };
-            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-            addresses.forEach(function(address) {
-                geocoder.addressSearch(address, function(result, status) {
-                    if (status === kakao.maps.services.Status.OK) {
-                        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                        
-                        // 마커 생성
-                        var marker = new kakao.maps.Marker({
-                            map: map,
-                            position: coords,
-                            title: address
-                        });
-
-                        // 마커를 지도에 표시합니다.
-                        marker.setMap(map);
-
-                        // 주소에 해당하는 데이터가 있는지 확인합니다.
-                        let data = Object.values(dataMap).find(item => item.address === address);
-
-                        if (data) {
-                            // 인포윈도우 내용 설정
-                            var iwContent = '<div class="win_index">' +
-                                '<div>전화번호: ' + data.tel + '</div>' +
-                                '<div>이름: ' + data.name + '</div>' +
-                                '</div>';
-                            
-                            // 인포윈도우를 생성합니다
-                            var infowindow = new kakao.maps.InfoWindow({
-                                content : iwContent,
-                                removable : true
-                            });
-
-                            // 마커에 클릭 이벤트를 등록합니다
-                            kakao.maps.event.addListener(marker, 'click', function() {
-                                // 마커 위에 인포윈도우를 표시합니다
-                                infowindow.open(map, marker);  
-                            });
-                        } else {
-                            console.log('주소 데이터 없음:', address);
-                        }
-                    } else {
-                        console.log('지오코더 실패: ' + status);
-                    }
-                });
-            });
-        }
-    });
-
-    </script>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-	<section>
-		<div id='container'><!-- 전체 틀 -->
-			<div id='location'> <!-- Home > 유기견 > 상세페이지 -->
-				<ol>
-					<li class='step'><a href="/index">Home</a></li>
-					<li class='step'>유기견</li>
-					<li>상세페이지</li>
-				</ol>
+<section>
+	<div id='container'>
+		<c:if test="${not empty errorMessage}">
+			<div class="error-message">
+					${errorMessage}
 			</div>
-			<div id="pet_content"><!-- 상세설명 전체 틀 -->
-				<div id="pet_detail"><!-- 제일 상단 -->
-					<div class='img_slide'><!-- img -->
-						<div class='img'><img src='/project_img/멍멍.png' alt='강아지'></div>
+		</c:if>
+		<c:if test="${empty errorMessage and not empty animal}">
+			<div id="pet_content">
+				<div id="pet_detail">
+					<div class='img_slide'>
+						<div class='img'>
+							<c:choose>
+								<c:when test="${not empty animal.popfile}">
+									<img src='${animal.popfile}' alt='${animal.kindCd}'>
+								</c:when>
+								<c:otherwise>
+									<img src='/image/default.jpg' alt='No Image'>
+								</c:otherwise>
+							</c:choose>
+						</div>
 					</div>
-					<div class='info'> <!-- 동물 정보 -->
-						<p class='title'><span>[강아지]</span>떡국</p>
+					<div class='info'>
+						<p class='title'><span>[${animal.processState}]</span>${animal.kindCd}</p>
 						<div class='detail_info'>
 							<ul>
-								<li>
-									<div class='dInfo'>나이</div>
-									<span>1살</span>
-								</li>
-								<li>
-									<div class='dInfo'>종</div>
-									<span>차우차우</span>
-								</li>
-								<li>
-									<div class='dInfo'>몸무게</div>
-									<span>5kg</span>
-								</li>
-								<li>
-									<div class='dInfo'>성별</div>
-									<span>남자</span>
-								</li>
-								<li>
-									<div class='dInfo'>색깔</div>
-									<span>베이지</span>
-								</li>
-								<li>
-									<div class='dInfo'>특징</div>
-									<span>통통하고 귀여움</span>
-								</li>
-								<li>
-									<div class='dInfo'>중성화</div>
-									<span>O</span>
-								</li>
+								<li><div class='dInfo'>공고번호</div><span>${animal.desertionNo}</span></li>
+								<li><div class='dInfo'>나이</div><span>${animal.age}</span></li>
+								<li><div class='dInfo'>품종</div><span>${animal.kindCd}</span></li>
+								<li><div class='dInfo'>몸무게</div><span>${animal.weight}</span></li>
+								<li><div class='dInfo'>성별</div><span>${animal.sexCd}</span></li>
+								<li><div class='dInfo'>색깔</div><span>${animal.colorCd}</span></li>
+								<li><div class='dInfo'>특징</div><span>${animal.specialMark}</span></li>
+								<li><div class='dInfo'>중성화</div><span>${animal.neuterYn}</span></li>
 								<li id='info_map'>
 									<div class='dInfo'>보호위치</div>
-									<div><span>서울시 관악구 OO 보호센터</span></div>
+									<div><span>${animal.careNm}</span></div>
 								</li>
-								<li><a href="#center_map" id="scroll_move"><img src="/project_img/map.png"></a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
+
 				<div class='gil_title'><p>오시는 길</p></div>
-				<div id='center_map'></div>
-				<div class='center_info'> <!-- 센터위치정보 전체 틀 -->
-				<!-- 1 주소연락처 -->
+				<div id='center_map' style="width:100%;height:400px;"></div>
+				<div class='center_info'>
 					<div class='center_address'>
-						<p class='Caddress'><img src="/project_img/map_icon.png">서울 강남구 영동대로 302 (국민제1빌딩 3,4층)</p>
-						<div class='center_tel'>
-						<img src='/project_img/tel_ic.png'>
-							
-								<span>TEL<br>02)123-4567</span>
-							
-						</div>
-					</div> <!-- 1 주소연락처 끝 -->
+						<p class='Caddress'>
+							<img src="/image/map_icon.png" alt="Location Icon">
+								${animal.careAddr}
+						</p>
+					</div>
+					<div class='center_tel'>
+						<span>TEL</span>
+						<img src="/image/tel_ic.png" alt="Telephone Icon" class="tel_ic">
+						<span>${animal.careTel}</span>
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<jsp:include page="/WEB-INF/views/footer.jsp"/>
+		</c:if>
+	</div>
+</section>
+
+<%@ include file="../footer/footer.jsp" %>
+
+<script>
+	$(document).ready(function() {
+		var shelterName = "${animal.careNm}";
+		var shelterAddress = "${animal.careAddr}";
+
+		console.log("Shelter Name:", shelterName);
+		console.log("Shelter Address:", shelterAddress);
+
+		if (shelterAddress && shelterAddress.trim() !== "") {
+			var mapContainer = document.getElementById('center_map');
+			var mapOption = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+			var geocoder = new kakao.maps.services.Geocoder();
+
+			geocoder.addressSearch(shelterAddress, function(result, status) {
+				console.log("Geocoder status:", status);
+				if (status === kakao.maps.services.Status.OK) {
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+					var marker = new kakao.maps.Marker({
+						map: map,
+						position: coords
+					});
+
+					var infowindow = new kakao.maps.InfoWindow({
+						content: '<div style="width:150px;text-align:center;padding:6px 0;">' + shelterName + '</div>'
+					});
+					infowindow.open(map, marker);
+
+					map.setCenter(coords);
+				} else {
+					console.log('Geocoding failed:', status);
+					mapContainer.innerHTML = '지도를 표시할 수 없습니다.';
+				}
+			});
+		} else {
+			console.log('Invalid shelter address: ' + shelterAddress);
+			document.getElementById('center_map').innerHTML = '주소 정보가 없어 지도를 표시할 수 없습니다.';
+		}
+	});
+</script>
 </body>
 </html>

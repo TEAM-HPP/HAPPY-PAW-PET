@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #FAF7F0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	height: 100%;
+}
+
+section {
+	margin-top: 100px;
+	flex: 1;
+}
+
+#container {
+	position: relative;
+	max-width: 900px;
+	padding: 46px 0 40px 0;
+	margin: 0px auto;
+}
+
+#location {
+	position: absolute;
+	right: 0;
+	top: 11px;
+	overflow: hidden;
+}
+
+#location ol {
+	float: right;
+	padding: 0 0 0 7px;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+#location .step {
+	background: url(static/image/bg_location.png) right 12px no-repeat;
+}
+
+#location ol li {
+	float: left;
+	padding: 11px 14px 12px 7px;
+	font-size: 13px;
+	line-height: 1.1;
+	color: #888;
+	color: #333;
+}
+
+#location ol li a {
+	text-decoration: none;
+}
+
+#pet_content {
+	width: 100%;
+	height: auto;
+	vertical-align: baseline;
+	align-items: center;
+	justify-content: center;
+}
+
+#pet_detail {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#pet_detail .img_slide {
+	width: 350px;
+	height: 400px;
+	padding-right: 50px;
+}
+
+#pet_detail .img_slide .img {
+	border: 1px #dedede solid;
+	width: 350px;
+	height: 400px;
+	display: flex;
+	align-items: center;
+}
+
+#pet_detail .img_slide div img {
+	width: 100%;
+	height: auto;
+}
+
+#scroll_move img {
+	width: 7%;
+	position: relative;
+	left: 7px;
+	bottom: 17px;
+}
+
+.gil_title {
+	width: 100%;
+	height: 100px;
+	border-bottom: 1px solid #ddd;
+	margin-top: 15px;
+	line-height: 100px;
+}
+
+.gil_title p {
+	font-size: 35px;
+	color: #333;
+	text-align: center;
+}
+
+#center_map {
+	width: 100%;
+	height: 400px;
+	border: 1px solid black;
+	justify-content: center;
+}
+
+.center_info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+	padding: 10px 0;
+	height: auto;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+
+.center_address {
+	flex-grow: 1;
+	margin-right: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.Caddress {
+	font-size: 16px; /* 텍스트 크기 조정 */
+	font-weight: 500;
+	color: #000;
+	display: inline-block;
+}
+
+.Caddress img {
+	margin-right: 5px;
+	width: 14px; /* 아이콘 크기 조정 */
+}
+
+.center_address p {
+	color: #000;
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 70px;
+	float: left;
+}
+
+.center_address p img {
+	text-align: left;
+	padding-right: 5px;
+	width: 3.5%;
+}
+
+.center_tel {
+	display: flex;
+	align-items: center;
+	white-space: nowrap; /* 텍스트가 한 줄에 유지되도록 설정 */
+}
+
+.center_tel img {
+	padding-right: 0 !important; /*footer.css padding-right 무시*/
+	width: 14px; /* 아이콘 크기 조정 */
+	margin-left: 5px;
+	display: inline-block;
+}
+
+.center_tel span {
+	font-size: 16px; /* 텍스트 크기 조정 */
+	font-weight: 500;
+	display: inline-block;
+}
+
+#pet_detail .info {
+	float: left;
+	width: 430px;
+	margin: 10px 0 0 0;
+}
+
+#pet_detail .info .title {
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 1.1;
+	border-bottom: 1px #d9d9d9 solid;
+	padding: 0 0 20px 0;
+}
+
+#pet_detail .info .title span {
+	font-size: 14px;
+	font-weight: 600;
+	color: #777;
+	padding: 0 0 10px 0;
+	display: block;
+}
+
+#pet_detail .info .detail_info {
+	width: 100%;
+	margin: 25px 0 0 0;
+}
+
+#pet_detail .info .detail_info ul li div {
+	display: block;
+	float: left;
+	font-size: 20px;
+}
+
+#pet_detail .info .detail_info ul li {
+	width: 100%;
+	padding: 0 0 16px 0;
+}
+
+#pet_detail .info .detail_info ul li span {
+	font-size: 20px;
+}
+
+#pet_detail .info .detail_info ul li .dInfo {
+	width: 100px;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+#info_map a {
+	border: 1px solid #777;
+	line-height: 30px;
+	margin-left: 10px;
+	padding: 1px 2px 1px 2px;
+}
+
+

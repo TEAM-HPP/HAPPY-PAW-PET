@@ -10,28 +10,27 @@
     <link rel="stylesheet" type="text/css" href="/css/top.css"/>
     <link rel="stylesheet" type="text/css" href="/css/adoption/animalList.css"/>
     <link rel="stylesheet" type="text/css" href="/css/footer.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         function fetchSigungu(uprCd) {
             if (uprCd === "") {
                 document.getElementById("sigungu").innerHTML = "<option value=''>시군구 선택</option>";
                 return;
             }
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", "/adoption/sigungu?uprCd=" + uprCd, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
-                    const sigunguSelect = document.getElementById("sigungu");
+            $.ajax({
+                url: "/adoption/sigungu",
+                data: { uprCd: uprCd },
+                success: function(response) {
+                    var sigunguSelect = document.getElementById("sigungu");
                     sigunguSelect.innerHTML = "<option value=''>시군구 선택</option>";
-                    response.forEach(function (sigungu) {
-                        const option = document.createElement("option");
+                    response.forEach(function(sigungu) {
+                        var option = document.createElement("option");
                         option.value = sigungu.orgCd;
                         option.text = sigungu.orgdownNm;
                         sigunguSelect.appendChild(option);
                     });
                 }
-            };
-            xhr.send();
+            });
         }
     </script>
 </head>
@@ -61,32 +60,37 @@
     <div class="total-count">총 ${totalCount}건</div>
     <div class="card-container">
         <c:forEach items="${animalList}" var="animal" varStatus="status">
-            <c:if test="${fn:contains(animal.kindCd, '개')}">
-                <div class="card ${status.index % 5 == 0 ? 'start-row' : ''}">
-                    <a href="/adoption/Adog_ex.jsp">
-                        <div class="card-content">
-                            <div class="card-image-container">
-                                <img src="${animal.popfile}" alt="${fn:replace(animal.kindCd, '[개]', '')}">
-                            </div>
-                            <div class="card-info">
-                                <h2>
-                                    <c:choose>
-                                        <c:when test="${fn:contains(animal.kindCd, '믹스견')}">
-                                            별동이★
-                                        </c:when>
-                                        <c:otherwise>
-                                            ${fn:replace(animal.kindCd, '[개]', '')}
-                                        </c:otherwise>
-                                    </c:choose>
-                                </h2>
-                                <p class="important-info">${animal.colorCd} / ${animal.age} / ${animal.weight} kg</p>
-                                <p>성별: ${animal.sexCd} / 중성화: ${animal.neuterYn}</p>
-                                <p class="contact-info">${animal.careNm} / ${animal.careTel}</p>
-                            </div>
+            <div class="card ${status.index % 5 == 0 ? 'start-row' : ''}">
+                <a href="/adoption/Adog_ex?desertionNo=${animal.desertionNo}">
+                    <div class="card-content">
+                        <div class="card-image-container">
+                            <c:choose>
+                                <c:when test="${not empty animal.popfile}">
+                                    <img src="${animal.popfile}" alt="${fn:replace(animal.kindCd, '[개]', '')}">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="/image/default.jpg" alt="No Image">
+                                </c:otherwise>
+                            </c:choose>
                         </div>
-                    </a>
-                </div>
-            </c:if>
+                        <div class="card-info">
+                            <h2>
+                                <c:choose>
+                                    <c:when test="${fn:contains(animal.kindCd, '믹스견')}">
+                                        별동이★
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${fn:replace(animal.kindCd, '[개]', '')}
+                                    </c:otherwise>
+                                </c:choose>
+                            </h2>
+                            <p class="important-info">${animal.colorCd} / ${animal.age} / ${animal.weight}</p>
+                            <p>성별: ${animal.sexCd} / 중성화: ${animal.neuterYn}</p>
+                            <p class="contact-info">${animal.careNm} / ${animal.careTel}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </c:forEach>
     </div>
 

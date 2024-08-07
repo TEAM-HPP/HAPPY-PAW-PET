@@ -15,12 +15,12 @@ main {
 }
 
 h1 {
-     position: relative;
-	  margin-top: 150px;
-	  margin-bottom: 0;
-	  font-size: 35px;
-	  font-weight: 650;
-	  text-align: center;
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 0;
+    font-size: 35px;
+    font-weight: 650;
+    text-align: center;
 }
 
 .total-count {
@@ -33,19 +33,21 @@ h1 {
 }
 
 .filters {
-	margin-top: 20px;
+    margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
 }
 
 .filters select, .filters button {
     padding: 8px;
-    margin: 5px; 
+    margin: 5px;
 }
 
-.filters button{
-	background-color: black; color: white;
-    font-size: 14px; font-weight: 550;
+.filters button {
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    font-weight: 550;
     width: 70px;
 }
 
@@ -72,7 +74,7 @@ h1 {
 
 .card-image-container {
     width: 100%;
-    padding-top: 75%; /* 4:3 비율 */
+    padding-top: 75%;
     position: relative;
     overflow: hidden;
 }
@@ -125,7 +127,7 @@ h1 {
 }
 
 .pagination #num {
-	background-color: white;
+    background-color: white;
     color: #333;
     margin-right: 4px;
     padding: 8px 16px;
@@ -133,21 +135,20 @@ h1 {
     transition: background-color 0.3s;
 }
 
-.location{
-	 background-color: #333;
-	 color: white;
-	 font-weight: 500;
-	 margin-right: 4px;
-     padding: 8px 16px;
-     text-decoration: none;
-     transition: background-color 0.3s;
+.location {
+    background-color: #333;
+    color: white;
+    font-weight: 500;
+    margin-right: 4px;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 .pagination #num.active {
     background-color: #333;
     color: white;
 }
-
 
 .pagination #num:hover:not(.active) {
     background-color: #ddd;
