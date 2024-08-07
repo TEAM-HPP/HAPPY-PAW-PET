@@ -56,21 +56,19 @@ public class AbandonedController {
     }
 
     @GetMapping("/adoption/Adog_ex")
-    public String showAnimalDetails(@RequestParam("desertionNo") String desertionNo, Model model) {
-        logger.info("Requested animal details for desertionNo: {}", desertionNo);
-        try {
-            Map<String, String> animal = abandonedService.getAnimalById(desertionNo);
-            if (animal != null && !animal.isEmpty()) {
-                logger.info("Retrieved animal data: {}", animal);
-                model.addAttribute("animal", animal);
-            } else {
-                logger.warn("No animal data found for desertionNo: {}", desertionNo);
-                model.addAttribute("errorMessage", "해당 동물의 정보를 찾을 수 없습니다. (공고번호: " + desertionNo + ")");
-            }
-        } catch (Exception e) {
-            logger.error("Error retrieving animal data for desertionNo: " + desertionNo, e);
-            model.addAttribute("errorMessage", "동물 정보를 불러오는 중 오류가 발생했습니다. (공고번호: " + desertionNo + ", 오류: " + e.getMessage() + ")");
+    public String showAnimalDetails(@RequestParam("animalId") String animalId, Model model) throws Exception {
+        System.out.println("Requested animalId: " + animalId); // Debug log for incoming animalId
+
+        Map<String, String> animal = abandonedService.getAnimalById(animalId);
+        if (animal != null && !animal.isEmpty()) {
+            System.out.println("Retrieved animal data: " + animal); // Debug log for retrieved data
+            model.addAttribute("animal", animal);
+        } else {
+            System.out.println("No animal data found for id: " + animalId); // Debug log for missing data
+            model.addAttribute("errorMessage", "해당 동물의 정보를 찾을 수 없습니다. (공고번호: " + animalId + ")");
         }
+
         return "adoption/Adog_ex";
     }
+
 }

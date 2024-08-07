@@ -55,25 +55,39 @@ public class AbandonedServiceImpl implements AbandonedService {
     // 특정 유기동물의 정보를 desertionNo를 사용하여 반환합니다.
     @Override
     public Map<String, String> getAnimalById(String desertionNo) throws Exception {
-        String xmlData = getAnimalDataByDesertionNo(desertionNo);
-        return parseAnimalData(xmlData, desertionNo);
-    }
-    // desertionNo로 특정 유기동물의 데이터를 API에서 가져옵니다.
-    private String getAnimalDataByDesertionNo(String desertionNo) throws Exception {
-        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic");
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + SERVICE_KEY);
-        urlBuilder.append("&" + URLEncoder.encode("desertionNo", "UTF-8") + "=" + URLEncoder.encode(desertionNo, "UTF-8"));
-        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=1");
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=1");
+        System.out.println("Fetching data for desertionNo: " + desertionNo);
 
-        return getResponseFromUrl(urlBuilder.toString());
+        int numOfRows = 1000; // 한 번의 호출로 가져올 수 있는 최대 데이터 수
+        int totalCount = getFilteredTotalCount("", ""); // 모든 데이터를 가져오기 위해 빈 문자열 사용
+        int totalPageCount = (totalCount + numOfRows - 1) / numOfRows; // 총 페이지 수 계산
+        List<Map<String, String>> allAnimals = new ArrayList<>();
+
+        // 각 페이지를 순회하며 데이터를 가져옵니다.
+        for (int page = 1; page <= totalPageCount; page++) {
+            System.out.println("Fetching page: " + page);
+            String xmlData = getPublicData(page, numOfRows, "", ""); // 모든 시도, 시군구 데이터를 가져오기 위해 빈 문자열 전달
+            allAnimals.addAll(parseXmlData(xmlData)); // 현재 페이지의 데이터를 추가
+        }
+
+        // 해당 desertionNo를 가진 데이터를 찾습니다.
+        for (Map<String, String> animal : allAnimals) {
+            if (desertionNo.equals(animal.get("desertionNo"))) {
+                System.out.println("Found matching animal: " + animal); // Debug log for found data
+                return animal; // 일치하는 데이터 반환
+            }
+        }
+
+        System.out.println("No animal data found for desertionNo: " + desertionNo); // Debug log for no data
+        return null; // 일치하는 데이터가 없을 경우 null 반환
     }
+
+
     // 페이지, 페이지 크기, 상위 코드, 기관 코드를 기준으로 유기동물 데이터를 가져옵니다.
-    private String getPublicData(int page, int pageSize, String uprCd, String orgCd) throws Exception {
+    private String getPublicData(int page, int numOfRows, String uprCd, String orgCd) throws Exception {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic");
         urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + SERVICE_KEY);
         urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(page), "UTF-8"));
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(pageSize), "UTF-8"));
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(numOfRows), "UTF-8"));
         urlBuilder.append("&" + URLEncoder.encode("upkind", "UTF-8") + "=" + URLEncoder.encode("417000", "UTF-8")); // 417000은 개를 의미합니다
 
         if (uprCd != null && !uprCd.isEmpty()) {
@@ -131,39 +145,42 @@ public class AbandonedServiceImpl implements AbandonedService {
 
         return animalList;
     }
+
     // XML 데이터를 파싱하여 특정 유기동물의 정보를 반환합니다.
     private Map<String, String> parseAnimalData(String xmlData, String targetDesertionNo) throws Exception {
         Document doc = parseXmlDocument(xmlData);
         NodeList itemList = doc.getElementsByTagName("item");
 
-        if (itemList.getLength() == 0) {
-            return null;
+        for (int i = 0; i < itemList.getLength(); i++) {
+            Element item = (Element) itemList.item(i);
+            String desertionNo = getElementValue(item, "desertionNo");
+
+            if (desertionNo.equals(targetDesertionNo)) {
+                Map<String, String> animalMap = new HashMap<>();
+                animalMap.put("desertionNo", desertionNo);
+                animalMap.put("kindCd", getElementValue(item, "kindCd"));
+                animalMap.put("colorCd", getElementValue(item, "colorCd"));
+                animalMap.put("age", getElementValue(item, "age"));
+                animalMap.put("weight", getElementValue(item, "weight"));
+                animalMap.put("processState", getElementValue(item, "processState"));
+                animalMap.put("sexCd", getElementValue(item, "sexCd"));
+                animalMap.put("neuterYn", getElementValue(item, "neuterYn"));
+                animalMap.put("specialMark", getElementValue(item, "specialMark"));
+                animalMap.put("careNm", getElementValue(item, "careNm"));
+                animalMap.put("careTel", getElementValue(item, "careTel"));
+                animalMap.put("careAddr", getElementValue(item, "careAddr"));
+                animalMap.put("popfile", getElementValue(item, "popfile"));
+
+                System.out.println("Found animal data: " + animalMap); // Debug log for found animal data
+                return animalMap; // 데이터가 일치하면 반환
+            }
         }
 
-        Element item = (Element) itemList.item(0);
-        String desertionNo = getElementValue(item, "desertionNo");
-
-        if (!desertionNo.equals(targetDesertionNo)) {
-            return null;
-        }
-
-        Map<String, String> animalMap = new HashMap<>();
-        animalMap.put("desertionNo", desertionNo);
-        animalMap.put("kindCd", getElementValue(item, "kindCd"));
-        animalMap.put("colorCd", getElementValue(item, "colorCd"));
-        animalMap.put("age", getElementValue(item, "age"));
-        animalMap.put("weight", getElementValue(item, "weight"));
-        animalMap.put("processState", getElementValue(item, "processState"));
-        animalMap.put("sexCd", getElementValue(item, "sexCd"));
-        animalMap.put("neuterYn", getElementValue(item, "neuterYn"));
-        animalMap.put("specialMark", getElementValue(item, "specialMark"));
-        animalMap.put("careNm", getElementValue(item, "careNm"));
-        animalMap.put("careTel", getElementValue(item, "careTel"));
-        animalMap.put("careAddr", getElementValue(item, "careAddr"));
-        animalMap.put("popfile", getElementValue(item, "popfile"));
-
-        return animalMap;
+        System.out.println("No matching data for desertionNo: " + targetDesertionNo); // Debug log for no matching data
+        return null;
     }
+
+
     // XML 데이터를 파싱하여 시도 목록을 반환합니다.
     private List<Map<String, String>> parseSidoData(String xmlData) throws Exception {
         Document doc = parseXmlDocument(xmlData);
@@ -196,13 +213,13 @@ public class AbandonedServiceImpl implements AbandonedService {
 
         return sigunguList;
     }
-    // XML 데이터를 파싱합니다.
+    // XML 문서를 파싱하는 메서드
     private Document parseXmlDocument(String xmlData) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        return builder.parse(new InputSource(new StringReader(xmlData)));
+        return builder.parse(new org.xml.sax.InputSource(new StringReader(xmlData)));
     }
-    // XML 요소의 값을 가져옵니다.
+    // XML 요소에서 값을 추출하는 메서드
     private String getElementValue(Element parent, String elementName) {
         NodeList nodeList = parent.getElementsByTagName(elementName);
         if (nodeList.getLength() > 0) {

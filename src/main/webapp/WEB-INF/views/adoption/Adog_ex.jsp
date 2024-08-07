@@ -41,12 +41,21 @@
 						</div>
 					</div>
 					<div class='info'>
-						<p class='title'><span>[${animal.processState}]</span>${animal.kindCd}</p>
+						<p class='title'>
+							<c:choose>
+								<c:when test="${fn:contains(animal.kindCd, '믹스견')}">
+									<span>[${animal.processState}]</span>별동이★
+								</c:when>
+								<c:otherwise>
+									<span>[${animal.processState}]</span>${fn:replace(animal.kindCd, '[개]', '')}
+								</c:otherwise>
+							</c:choose>
+						</p>
 						<div class='detail_info'>
 							<ul>
 								<li><div class='dInfo'>공고번호</div><span>${animal.desertionNo}</span></li>
 								<li><div class='dInfo'>나이</div><span>${animal.age}</span></li>
-								<li><div class='dInfo'>품종</div><span>${animal.kindCd}</span></li>
+								<li><div class='dInfo'>품종</div><span>${fn:replace(animal.kindCd, '[개]', '')}</span></li>
 								<li><div class='dInfo'>몸무게</div><span>${animal.weight}</span></li>
 								<li><div class='dInfo'>성별</div><span>${animal.sexCd}</span></li>
 								<li><div class='dInfo'>색깔</div><span>${animal.colorCd}</span></li>

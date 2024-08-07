@@ -61,7 +61,7 @@
     <div class="card-container">
         <c:forEach items="${animalList}" var="animal" varStatus="status">
             <div class="card ${status.index % 5 == 0 ? 'start-row' : ''}">
-                <a href="/adoption/Adog_ex?desertionNo=${animal.desertionNo}">
+                <a href="/adoption/Adog_ex?animalId=${animal.desertionNo}">
                     <div class="card-content">
                         <div class="card-image-container">
                             <c:choose>
