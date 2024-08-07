@@ -21,6 +21,7 @@ import com.java.service.MemberService;
 import com.java.service.PetService;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PController {
@@ -198,5 +199,31 @@ public class PController {
 		session.invalidate();
 		
 		return "redirect:/"; //메인페이지로 이동
+	}
+
+	@GetMapping("/mypage/checkPw")
+	public String checkPw() {
+		return "mypage/checkPw";
+	}
+
+	@RequestMapping("/mypage/checkPw") //회원정보 수정을 위한 pw 조회
+	public String checkPw(MemberDto mdto, String check_pw, RedirectAttributes rA) {
+		String id = (String)session.getAttribute("sessionId");
+		//기존 비밀번호 조회
+		mdto.setId(id);
+
+		boolean checkPw = memberService.checkPw(mdto, check_pw);
+		String url = "";
+
+		//비밀번 호 비교
+		if(checkPw) {
+			//비밀번호 일치 시 pEdit로 이동
+			url =  "redirect:/mypage/pEdit";
+		}else {
+			//비밀번호 불일치 시
+			rA.addFlashAttribute("errorM", "비밀번호를 다시 확인해주세요.");
+			url =  "redirect:/mypage/checkPw";
+		}
+		return url;
 	}
 }

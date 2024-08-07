@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+#findForm{height: 1000px;}       
+section{position: relative; top:100px; left:0; height:100%; 
+	background-color: #FAF7F0; flex:1;}
+.subbanner { position: relative; width: 100%; height: 300px; background: url('/image/back2.jpg') no-repeat 0 -750px;
+			background-size: cover; }
+.main{position: relative; width: 1100px; height:800px; margin: 0 auto; 
+	  padding-top:60px; box-sizing: border-box;}
+.main > h2{ font-size: 35px; color: #342F2F; text-align: center;
+            font-family: Roboto;
+            font-optical-sizing: auto;
+            font-weight: 550;
+            font-style: normal; }
+.main > p{ font-size: 14px; color: #342F2F; text-align: center;
+font-family: Roboto;
+font-optical-sizing: auto;
+font-weight: 400;
+font-style: normal; }
+form{margin-top: 45px; margin-bottom: 30px;}
+form > button{ margin-top: 45px; width:100%; height: 55px; background: #342F2F; color: white; font-size: 18px;
+            font-weight: bold; border: none; }
+#fieldset_class{
+	    width: 1100px;
+	    font-size: 15px;
+	    margin: 0 auto;
+	    border-top: 1px solid rgb(209, 209, 209);
+	    border-left: none;
+	    border-right: none;
+	    border-bottom: none;
+	    margin-bottom: 15px;
+}
+#fieldset_class dl dt {
+    float: left;
+    width: 250px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    background-color: rgb(246, 246, 246);
+}
+#fieldset_class dl dt div {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(/image/point.png) no-repeat 45% 88%;
+    position: relative;
+    left: 20px;
+    vertical-align: middle;
+}
+
+#fieldset_class dl dt label {
+    font-size: 16px;
+    font-weight: 700;
+    position: absolute;
+    padding-left: 25px;
+}
+
+#fieldset_class dl dd {
+    width: 850px;
+    float: left;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+input[type="password"] { height: 28px; display: inline-block;}
+#check dt { height: 60px;}
+#check dd { height: 60px;}
+#check input { width: 276px;}
+#check dt label { padding-top: 16px;}
+#check dt div { top: 13px; }

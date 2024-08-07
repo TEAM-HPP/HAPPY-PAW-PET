@@ -53,6 +53,10 @@
 		select * from happymem where id=#{id}
 	</select>
 
+	<!-- 회원정보 수정을 위한 pw 조회 -->
+	<select id="checkPw" resultType="com.java.dto.MemberDto">
+		select * from happymem where id=#{id}
+	</select>
 
 
 </mapper>

@@ -44,4 +44,7 @@ public interface MemberDao {
 	
 	//프로필 사진 바꾸기
 	void mainFile(MemberDto mdto);
+
+	//회원정보 수정을 위한 pw 조회
+	MemberDto checkPw(MemberDto mdto);
 }

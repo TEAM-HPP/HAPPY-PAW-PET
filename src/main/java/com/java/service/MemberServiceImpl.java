@@ -89,6 +89,12 @@ public class MemberServiceImpl implements MemberService{
 		return mDto;
 	}
 
+	@Override //회원정보 수정을 위한 pw 조회
+	public boolean checkPw(MemberDto mdto, String check_pw) {
+		MemberDto mDto = memberDao.checkPw(mdto);
+		return mDto.getPw() != null && mDto.getPw().equals(check_pw);
+	}
+
 	
 
 }
