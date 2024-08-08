@@ -9,20 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		function pBtn(){
-			if (${sessionId == null}){
-				$("#q06").css("display","inline-block");
-				$("#q07").css("display","none");
-				alert("로그인 이후 이용 가능한 페이지입니다.");
-				location.href="/login/login";
-			}else{
-				$("#q06").css("display","none");
-				$("#q07").css("display","inline-block");
-			}
-			
-		}
-	</script>
-	<script>
 		function pBtn(){  // 비밀번호확인
 			let pw = $("#pw").val();
 			
@@ -97,7 +83,7 @@
 						<dl id="pwF">
 							<dt>
 								<div></div>
-								<label for="id">비밀번호확인</label>
+								<label for="pw">비밀번호확인</label>
 							</dt>
 							<dd>
 								<input type="password" id="pw" name="pw" oninput="pBtn()" required />
@@ -107,7 +93,7 @@
 						<dl id="nameF">
 							<dt>
 								<div></div>
-								<label for="id">이름</label>
+								<label for="name">이름</label>
 							</dt>
 							<dd>
 								<input type="text" id="name" name="name" oninput="nBtn()" required/>

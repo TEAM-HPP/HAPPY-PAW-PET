@@ -38,6 +38,9 @@ public interface AdoptDao {
 	
 	//공지사항 작성 후 저장
 	void insertNotice(AdoptDto adDto);
+	
+	//관리자페이지 - 커뮤니티 모두 불러오기
+	ArrayList<AdoptDto> adoptCommuList();
 
 	
 

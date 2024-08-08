@@ -10,7 +10,7 @@
 		from happyqna h
 		left join (select qno, count(*) as answer_cnt from answer group by qno) a
 		on h.qno = a.qno
-		order by h.qno asc
+		order by h.qno desc
 	</select>
 
 </mapper>

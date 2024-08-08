@@ -1,5 +1,6 @@
 package com.java.service.adopt;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.java.dto.AdoptDto;
@@ -29,5 +30,8 @@ public interface AdoptService {
 
 	//공지사항 작성 후 저장
 	void insertNotice(AdoptDto adDto);
+
+	//관리자페이지 - 커뮤니티 모두 불러오기
+	ArrayList<AdoptDto> adoptCommuList();
 
 }

@@ -20,7 +20,6 @@
 						<li><a href="#" id="q03">진단내역</a></li>
 						<li><a href="/admin/pet" id="q04">반려동물관리</a></li>
 						<li><a href="/admin/board" id="q05">게시판</a></li>
-						<li><a href="#" id="q06">Q&A</a></li>
 					</ul>
 				</div>
 			</div>

@@ -6,8 +6,6 @@ section{position: relative; top:100px; left:0; min-height:850px;
 
 button[type="button"]{ cursor: pointer;}
 
-#s01 { background-color : rgb(209, 209, 209);
-						> a {color: black;};}				
 
 
 .main{position: relative;

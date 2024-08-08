@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="/css/admin/adminTop.css" />
 	<link rel="stylesheet" type="text/css" href="/css/admin/subbanner.css" />
-	<link rel="stylesheet" type="text/css" href="/css/admin/adminQna.css" />
+	<link rel="stylesheet" type="text/css" href="/css/admin/adminAdoption.css" />
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -22,12 +22,9 @@
 		<section>
 			<%@ include file="../admin/subbanner.jsp" %>
 			<div class="main">
-				<h2><span>Q&A 분석</span></h2>
+				<h2><span>입양공고 커뮤니티 관리</span></h2>
 				<div class="boardlist">
-					<div id="comment">
-						<h4>Q&A 리스트</h4>
-						<button id="Canalyst" class="Total">키워드분석하기</button>
-					</div>
+					<h4>커뮤니티 리스트 (총 ${adlist.size() }개의 글)</h4>
 					<table id="board">
 						<colgroup> 
 					    	<col style="width: 7%;"/> 
@@ -45,43 +42,26 @@
 								<th>내용</th>
 								<th>작성일자</th>
 								<th>조회수</th>
-								<th>답변수</th>
+								<th>답글수</th>
 								<th>이동</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${ qalist}" var="qaDto">
+							<c:forEach items="${ adlist}" var="adDto">
 								<tr>
-									<td id="qno">${qaDto.qno }</td>
-									<td>${qaDto.qtitle}</td>
-									<td id ="content">${qaDto.qcontent }</td>
-									<td>${qaDto.qdate }</td>
-									<td>${qaDto.qhit }</td>
-									<td>${qaDto.answer_cnt }</td>
-									<td id="button"><div id="QnaOne"><a href="/board/qnaView?qno=${qaDto.qno }">바로가기</a></div></td>
+									<td id="qno">${adDto.bno }</td>
+									<td>${adDto.btitle}</td>
+									<td id ="content">${adDto.bcontent }</td>
+									<td>${adDto.bdate }</td>
+									<td>${adDto.bhit }</td>
+									<td>${adDto.bindent }</td>
+									<td id="button"><div id="ComOne"><a href="/adoption/view?bno=${adDto.bno }">바로가기</a></div></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<!-- ----------------------------------------------------------------------------- -->
-				<!-- 차트분석 -->
-				<div class="chart">
-					<div id="chart_g">
-						<canvas id="myChart"></canvas>
-					</div>
-					<div id="chart_a">
-						<canvas id="myChart2"></canvas>
-					</div>
-				</div>
-				<div class="totalChart">
-					<div id="chartT1">
-						<canvas id="tChart"></canvas>
-					</div>
-					<div id="chartT2">
-						<canvas id="tChart2"></canvas>
-					</div>
-				</div>
 			</div>
 		</section>
 	</body>

@@ -105,4 +105,12 @@ public class AdoptServiceImpl implements AdoptService {
 		adoptDao.insertNotice(adDto);
 	}
 
+	@Override //관리자페이지 - 커뮤니티 모두 불러오기
+	public ArrayList<AdoptDto> adoptCommuList() {
+		
+		ArrayList<AdoptDto> adlist = adoptDao.adoptCommuList(); 
+		
+		return adlist;
+	}
+
 }

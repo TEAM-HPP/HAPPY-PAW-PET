@@ -4,66 +4,63 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	$(document).ready(function(){
+	    $("li[id^='s0']").click(function(){
+	        $("div[id^='sub']").css("display","none"); // 모든 섹션 숨기기
+	        var target = $(this).attr("id").replace("s0", "sub");
+	        $("#" + target).css("display","block"); // 클릭된 버튼과 연결된 섹션만 표시
+	    });
+	});
+</script>
+
 <div class="banner">
-	<a href="/admin/admin"><div class="title">ADMINISTRATOR</div></a>
-	<ul class="subbanner">
-		<li id="s01" class="sub_title">
-			<a href="/admin/member" class="sub_titlelink">회원관리</a>
-		</li>
-		<li id="s02" class="sub_title">
-			<a href="#" class="sub_titlelink">진단내역</a>
-		</li>
-		<li id="s03" class="sub_title">
-			<a href="/admin/pet" class="sub_titlelink">반려동물관리</a>
-			<ul id="sub3">
-				<li><a href="/admin/pet" class="sub_link">등록현황</a></li>
-				<li><a href="/admin/pet" class="sub_link">0001</a></li>
+	<div class="title"><a href="/admin/admin">ADMINISTRATOR</a></div>
+	<div class="all">
+		<div class="sub_left">
+			<ul class="subbanner">
+				<li id="s01" class="sub_title">
+					<a href="#" class="sub_titlelink">회원관리</a>
+				</li>
+				<li id="s02" class="sub_title">
+					<a href="#" class="sub_titlelink">진단내역</a>
+				</li>
+				<li id="s03" class="sub_title">
+					<a href="#" class="sub_titlelink">반려동물관리</a>
+				</li>
+				<li id="s04" class="sub_title">
+					<a href="#" class="sub_titlelink">게시판</a>
+				</li>
 			</ul>
-		</li>
-		<li id="s04" class="sub_title">
-			<a href="/admin/board" class="sub_titlelink">게시판</a>
-			<ul id="sub4">
-				<li><a href="/admin/board" class="sub_link">공지사항리스트</a></li>
-				<li><a href="/admin/boardComment" class="sub_link">top10 댓글분석</a></li>
-			</ul>
-		</li>
-		<li id="s05" class="sub_title">
-			<a href="/admin/qna" class="sub_titlelink">Q&A</a>
-			<ul id="sub5">
-				<li><a href="/admin/qna" class="sub_link">Q&A리스트</a></li>
-				<li><a href="/admin/qna" class="sub_link">0001</a></li>
-			</ul>
-		</li>
-	</ul>
-	<!-- ----------------------------------------------------------------- -->
-	<div class="sub" id="sub1">
-		<ul id="sub11">
-			<li><a href="/admin/member" class="sub_link">등록회원리스트</a></li>
-			<li><a href="/admin/byeMember" class="sub_link">탈퇴회원리스트</a></li>
-		</ul>
-	</div>
-	<div class="sub" id="sub2">
-		<ul id="sub22">
-			<li><a href="#" class="sub_link">0000</a></li>
-			<li><a href="#" class="sub_link">0001</a></li>
-		</ul>
-	</div>
-	<div class="sub" id="sub3">
-		<ul id="sub33">
-			<li><a href="/admin/pet" class="sub_link">등록현황</a></li>
-			<li><a href="/admin/pet" class="sub_link">0001</a></li>
-		</ul>
-	</div>
-	<div class="sub" id="sub4">
-		<ul id="sub44">
-			<li><a href="/admin/member" class="sub_link">등록회원리스트</a></li>
-			<li><a href="/admin/byeMember" class="sub_link">탈퇴회원리스트</a></li>
-		</ul>
-	</div>
-	<div class="sub" id="sub5">
-		<ul id="sub55">
-			<li><a href="/admin/member" class="sub_link">등록회원리스트</a></li>
-			<li><a href="/admin/byeMember" class="sub_link">탈퇴회원리스트</a></li>
-		</ul>
+		</div>
+		<!-- ----------------------------------------------------------------- -->
+		<div class="sub_right">
+			<div class="sub" id="sub1">
+				<ul class="subcontent">
+					<li><a href="/admin/member" class="sub_link">등록회원리스트</a></li>
+					<li><a href="/admin/member" class="sub_link">탈퇴회원리스트</a></li>
+				</ul>
+			</div>
+			<div class="sub" id="sub2">
+				<ul class="subcontent">
+					<li><a href="#" class="sub_link">안구질환</a></li>
+					<li><a href="#" class="sub_link">피부질환</a></li>
+				</ul>
+			</div>
+			<div class="sub" id="sub3">
+				<ul class="subcontent">
+					<li><a href="/admin/pet" class="sub_link">등록현황</a></li>
+				</ul>
+			</div>
+			<div class="sub" id="sub4">
+				<ul class="subcontent">
+					<li><a href="/admin/boardDetail" class="sub_link">공지사항리스트</a></li>
+					<li><a href="/admin/qna" class="sub_link">Q&A리스트</a></li>
+					<li><a href="/admin/adoption" class="sub_link">입양공고커뮤니티</a></li>
+				</ul>
+			</div>
+			<!-- ---------------------------------------------------------------------------- -->
+		</div>
 	</div>
 </div>

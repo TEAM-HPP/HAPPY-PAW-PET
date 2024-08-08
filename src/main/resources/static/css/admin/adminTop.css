@@ -35,6 +35,5 @@ nav{width: 95%; height: 90px; margin:5px 15px 15px 0px; display: flex; }
 #q02{width: 110px;}
 #q03{width: 110px;}
 #q04{width: 140px;}
-#q05{width: 90px;}
-#q06{width: 70px;}
-#q06:after{display: none; content: ""; width: 0;  margin-left: 0;}
+#q05{width: 80px;}
+#q05:after{display: none; content: ""; width: 0;  margin-left: 0;}

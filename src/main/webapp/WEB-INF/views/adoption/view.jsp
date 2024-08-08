@@ -75,7 +75,7 @@
 		      <tr>
 		        <td colspan="6"><strong>다음글</strong> <span class="separator">|</span> 
 		        	<c:if test="${map.prevDto.bno != null }">
-		        		<a href="/adoption/view?bno=${map.prevDto.bno}&page=${page}" id="text">[게시글] ${map.prevDto.btitle }</a> 
+		        		<a href="/adoption/view?bno=${map.prevDto.bno}&page=${page}" id="text22">[게시글] ${map.prevDto.btitle }</a> 
 		        	</c:if>
 		        	<c:if test="${map.prevDto.bno == null }">
 		        		다음글이 없습니다.
@@ -85,7 +85,7 @@
 		      <tr>
 		        <td colspan="6"><strong>이전글</strong> <span class="separator">|</span> 
 		        	<c:if test="${map.nextDto.bno != null }">
-		        	  <a href="/adoption/view?bno=${map.nextDto.bno}&page=${page}" id="text">[게시글] ${map.nextDto.btitle }</a>
+		        	  <a href="/adoption/view?bno=${map.nextDto.bno}&page=${page}" id="text22">[게시글] ${map.nextDto.btitle }</a>
 		        	</c:if>
 		        	<c:if test="${map.nextDto.bno == null }">
 		        		이전글이 없습니다.

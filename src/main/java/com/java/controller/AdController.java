@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.dto.AdoptDto;
 import com.java.dto.AnalyticsDto;
 import com.java.dto.ByememDto;
 import com.java.dto.MemberDto;
@@ -31,6 +32,7 @@ import com.java.service.AnalyticsService;
 import com.java.service.ByememService;
 import com.java.service.MemberService;
 import com.java.service.PetService;
+import com.java.service.adopt.AdoptService;
 import com.java.service.board.BcmAgeService;
 import com.java.service.board.BcmService;
 import com.java.service.board.BoardCommentService;
@@ -51,6 +53,7 @@ public class AdController {
 	@Autowired QnaAnswerService qaService;
 	@Autowired BcmService bcmService;
 	@Autowired BcmAgeService bcmAgeService;
+	@Autowired AdoptService adoptService;
 	@Autowired
 	private AbandonedService abandonedService; // AnimalService 주입
 	@Autowired
@@ -59,32 +62,20 @@ public class AdController {
 
 
 	@RequestMapping("/admin/admin")  //관리자페이지 메인
-	public ModelAndView admin() {
+	public String admin() {
 
-		ArrayList<MemberDto> list = memberService.memList();
-		ArrayList<PetDto> plist = petService.petList();
-		ArrayList<ByememDto> blist = byememService.byememList();
-		ArrayList<BoardCommentDto> bclist = bcService.boardCommentList();
-		ArrayList<QnaAnswerDto> qalist = qaService.qnaAnswerList();
-
-
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("list",list);
-		mv.addObject("plist",plist);
-		mv.addObject("blist",blist);
-		mv.addObject("bclist",bclist);
-		mv.addObject("qalist",qalist);
-		mv.setViewName("admin/admin");
-
-		return mv;
+		return "admin/admin";
 	}
 	
 	@GetMapping("/api_analytics")
     @ResponseBody
     private ResponseEntity<AnalyticsDto> getAnalyticsDataFromService() {
-    	AnalyticsDto analDto = analyticsService.getData();
-        System.out.println("datalist : "+analDto);
-        return ResponseEntity.ok(analDto);
+    	
+		AnalyticsDto analDto = analyticsService.getData();
+        
+		//System.out.println("datalist : "+analDto);
+        
+		return ResponseEntity.ok(analDto);
     }
 	
 	//-----------------------------------------------------------------------------------------
@@ -202,22 +193,38 @@ public class AdController {
 
 	}
 
-
 	//-------------------------------------------------------------------------------------
-	//공지사항
-	@RequestMapping("/admin/board") //관리자페이지 - 공지사항 전체보기
+	//게시판
+	@RequestMapping("/admin/board") //관리자페이지 - 게시판 전체(공지사항, QNA, 입양커뮤니티)
 	public ModelAndView board() {
 
 		ArrayList<BoardCommentDto> bclist = bcService.boardCommentList();
+		ArrayList<QnaAnswerDto> qalist = qaService.qnaAnswerList();
+		ArrayList<AdoptDto> adlist = adoptService.adoptCommuList();
+
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("bclist",bclist);
+		mv.addObject("qalist",qalist);
+		mv.addObject("adlist",adlist);
+		mv.setViewName("admin/board");
+
+		return mv;
+	}
+	//-----------------------------------------------------------------------------------------
+	
+	@RequestMapping("/admin/boardDetail") //관리자페이지 - 공지사항관리
+	public ModelAndView boardDetail() {
+		
+		ArrayList<BoardCommentDto> bclist = bcService.boardCommentList();
 		ArrayList<BoardCommentDto> rlist = bcService.qhitRank();
 		ArrayList<BoardCommentDto> clist = bcService.qcommentRank();
-
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bclist",bclist);
 		mv.addObject("rlist",rlist);
 		mv.addObject("clist",clist);
-		mv.setViewName("admin/board");
-
+		mv.setViewName("admin/boardDetail");
+		
 		return mv;
 	}
 
@@ -306,6 +313,20 @@ public class AdController {
 		mv.setViewName("admin/qna");
 
 
+		return mv;
+	}
+	//------------------------------------------------------------------------------------------
+	//adoption
+	@RequestMapping("/admin/adoption") //QnA 게시판 전체보기
+	public ModelAndView adoption() {
+		
+		ArrayList<AdoptDto> adlist = adoptService.adoptCommuList();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("adlist",adlist);
+		mv.setViewName("admin/adoption");
+		
+		
 		return mv;
 	}
 

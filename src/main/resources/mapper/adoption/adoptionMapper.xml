@@ -93,4 +93,9 @@
     values (adop_seq.nextval, #{id}, #{btitle}, #{bcontent}, sysdate, adop_seq.currval, 0, 0, #{bfile}, 0, 1)
   </insert>
   
+ <!-- 관리자페이지 입양공고커뮤니티 모두 불러오기 -->
+  <select id="adoptCommuList" resultType="com.java.dto.AdoptDto">
+    select * from happyadoption order by bno desc
+  </select>
+  
 </mapper>

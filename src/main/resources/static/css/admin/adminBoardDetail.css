@@ -30,7 +30,17 @@ button[type="button"]{ cursor: pointer;}
 
 #comment{ display: flex;}
 #comment > h4{
-	width : 130px; height :  30px; color: #333; 
+	width : 210px; height :  30px; color: #333; 
+	font-size: 18px;
+    font-weight: 600;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 10px; 
+}
+
+#comment3{ display: flex;}
+#comment3 > h4{
+	width : 310px; height :  30px; color: #333; 
 	font-size: 18px;
     font-weight: 600;
     box-sizing: border-box;
@@ -39,11 +49,10 @@ button[type="button"]{ cursor: pointer;}
 }
 
 #Canalyst { 
-	margin: 0 0 10px 0px; width:130px; height: 30px; background: black; color: white; font-size: 14px;
+	margin: 0 0 10px 0px; width:110px; height: 30px; background: black; color: white; font-size: 14px;
     font-weight: 550; border: none;
     cursor: pointer; border-radius: 5px;
 }
-
 
 .boardlist > h4 > span { font-size: 13px; color: #555;}
 .boardlist{margin-top: 45px; margin-bottom: 30px;}
@@ -69,7 +78,7 @@ button[type="button"]{ cursor: pointer;}
     white-space: nowrap;
 }
 
-#qno {
+#rank {
 	padding-left: 0px; 
 	text-align: center; font-weight: 550;
 }
@@ -78,11 +87,73 @@ button[type="button"]{ cursor: pointer;}
 
 #button {padding-top: 2px; padding-bottom: 2px; padding-left: 23px;}
 
+#boardOne { width: 100px; height: 25px; background: black;  text-align: center;
+			border-radius: 5px;
+ }
+			
+
+#boardOne > a { display: block; width: 100px; height: 25px; color: white; font-size: 15px; font-weight: 550; }
+
+
+/*-------------------------------------------*/
+.qnalist > h4{ width : 100%; height :  30px; color: #333; 
+			font-size: 18px;
+            font-weight: 600;
+            box-sizing: border-box;
+            margin : 0 auto; margin-bottom: 10px;
+            padding: 0 0 10px 10px; }
+
+#comment2{ display: flex;}
+#comment2 > h4{
+	width : 230px; height :  30px; color: #333; 
+	font-size: 18px;
+    font-weight: 600;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 10px; 
+}
+
+#Kanalyst { 
+	margin: 0 0 10px 0px; width:130px; height: 30px; background: black; color: white; font-size: 14px;
+    font-weight: 550; border: none;
+    cursor: pointer; border-radius: 5px;
+}
+
+
+.qnalist > h4 > span { font-size: 13px; color: #555;}
+.qnalist{margin-top: 45px; margin-bottom: 30px;}
+
+#board2 {
+		display: table;
+	    width: 100%;
+	    font-size: 15px;
+	    margin: 0 auto;
+	    margin-bottom: 15px;
+	    border-collapse: collapse;
+	    background-color: rgb(246, 246, 246);
+}
+#board2 > tr,td {border : 1px solid rgb(209,209,209); height: 25px;
+				padding-left: 10px;}
+#board2 > thead { font-size: 15px; text-align: center; border-left: 1px solid rgb(209,209,209);
+			background-color: rgb(209, 209, 209); border-top: 3px solid rgb(209, 209, 209);}
+			
+#content2 {
+	max-width: 270px; /* 원하는 최대 너비를 설정하세요 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#qno {
+	padding-left: 0px; 
+	text-align: center; font-weight: 550;
+}
+
+
 #QnaOne { width: 100px; height: 25px; background: black;  text-align: center;
 			border-radius: 5px;
  }
 			
 
 #QnaOne > a { display: block; width: 100px; height: 25px; color: white; font-size: 15px; font-weight: 550; }
-
 
