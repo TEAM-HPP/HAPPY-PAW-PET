@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.dto.AnalyticsDto;
 import com.java.dto.ByememDto;
 import com.java.dto.MemberDto;
 import com.java.dto.PetDto;
@@ -25,6 +27,7 @@ import com.java.dto.board.BoardDto;
 import com.java.dto.qna.QnaAnswerDto;
 import com.java.dto.qna.QnaDto;
 import com.java.service.AbandonedService;
+import com.java.service.AnalyticsService;
 import com.java.service.ByememService;
 import com.java.service.MemberService;
 import com.java.service.PetService;
@@ -50,6 +53,8 @@ public class AdController {
 	@Autowired BcmAgeService bcmAgeService;
 	@Autowired
 	private AbandonedService abandonedService; // AnimalService 주입
+	@Autowired
+	private AnalyticsService analyticsService;
 
 
 
@@ -73,6 +78,15 @@ public class AdController {
 
 		return mv;
 	}
+	
+	@GetMapping("/api_analytics")
+    @ResponseBody
+    private ResponseEntity<AnalyticsDto> getAnalyticsDataFromService() {
+    	AnalyticsDto analDto = analyticsService.getData();
+        System.out.println("datalist : "+analDto);
+        return ResponseEntity.ok(analDto);
+    }
+	
 	//-----------------------------------------------------------------------------------------
 	//회원관리
 	@GetMapping("/admin/member") //관리자페이지-회원전체보기

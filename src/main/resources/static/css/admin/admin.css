@@ -36,11 +36,38 @@ button[type="button"]{ cursor: pointer;}
 }
 .servTime > span {
 	width: 100%; margin : 0 auto; padding: 0 0 10px 10px;
-	font-size: 28px; color: blue;
+	font-size: 25px; color: blue;
 	font-weight: 600;
 }
 
-.member > h4{ width : 100%; height :  30px; color: #333;
+.analytics{
+	width: 100%; display: inline-block;
+	margin: 20px 0 20px 0; 
+}
+
+.analytics > h4{ 
+	width : 100%; height :  30px; color: #333;
+	font-size: 18px;
+	font-weight: 600;
+	box-sizing: border-box;
+	margin : 0 auto; margin-bottom: 10px;
+	padding: 0 0 10px 10px; }
+
+#data-container{
+	width: 100%;
+}
+
+.contain1, .contain2{
+	display: flex;
+	margin-top: 10px
+}
+
+#myChart, #myChart2, #myChart3, #myChart4{
+	width: 50% !important; height: 350px !important;
+}
+
+.member > h4{ 
+	width : 100%; height :  30px; color: #333;
 	font-size: 18px;
 	font-weight: 600;
 	box-sizing: border-box;

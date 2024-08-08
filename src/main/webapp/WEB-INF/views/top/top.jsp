@@ -50,7 +50,7 @@
 					<ul class="title">
 						<li class="titlesub"><a href="/index" class="titlesublink" id="q01">Home</a></li>
 						<li class="titlesub" id="q088">
-							<a href="/board/list" class="titlesublink" id="q08">공지사항</a>
+							<a href="/board/list" class="titlesublink" id="q08">게시판</a>
 							<ul class="submenu">
 								<li><a href="/board/list" class="submenulink">공지사항</a></li>
 								<li><a href="/board/qnaList" class="submenulink">Q&A</a></li>

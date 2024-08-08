@@ -40,7 +40,7 @@ nav{width: 95%; height: 90px; margin:5px 15px 15px 0px; display: flex; }
 #q06:after{display: none; content: ""; width: 0;  margin-left: 0;}
 #q07{min-width: 170px; text-align: right;}
 #q07:after{display: none; content: ""; width: 0;  margin-left: 0;}
-#q08{width: 110px; text-align: right;}
+#q08{width: 90px; text-align: right;}
 
 .submenu {
 	position: relative; top: 33px;

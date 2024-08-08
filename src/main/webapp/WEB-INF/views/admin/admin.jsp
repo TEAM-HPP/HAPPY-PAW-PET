@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/admin/adminTop.css" />
 	<link rel="stylesheet" type="text/css" href="/css/admin/subbanner.css" />
 	<link rel="stylesheet" type="text/css" href="/css/admin/admin.css" />
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<title>HappyPawPet 관리자페이지</title>
 </head>
@@ -58,6 +60,245 @@
 
 	window.onload = startUpdating;
 </script>
+<script>
+$(document).ready(function() {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [], // 초기 레이블
+            datasets: [{
+                label: 'Active 7-Day Users',
+                data: [], // 초기 데이터
+                borderColor: 'orange',
+                borderWidth: 1,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '7일간 활성 사용자',
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true, // y축이 0부터 시작하도록 설정
+                    ticks: {
+                        stepSize: 5 // y축 간격을 5로 설정
+                    },
+                    suggestedMax: function(context) {
+                        const maxValue = Math.max(...context.chart.data.datasets[0].data);
+                        return maxValue + 5; // y축의 최대값을 데이터의 최대값보다 5만큼 많게 설정
+                    }
+                }
+            },
+            maintainAspectRatio: true
+        }
+    });
+	
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
+    let myChart2 = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: [], // 초기 레이블
+            datasets: [{
+                label: 'Average Session Duration',
+                data: [], // 초기 데이터
+                borderColor: 'red',
+                borderWidth: 1,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '평균 체류시간',
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true, // y축이 0부터 시작하도록 설정
+                    ticks: {
+                        stepSize: 5 // y축 간격을 5로 설정
+                    },
+                    suggestedMax: function(context) {
+                        const maxValue = Math.max(...context.chart.data.datasets[0].data);
+                        return maxValue + 5; // y축의 최대값을 데이터의 최대값보다 5만큼 많게 설정
+                    }
+                }
+            },
+            maintainAspectRatio: true
+        }
+    });
+    const ctx3 = document.getElementById('myChart3').getContext('2d');
+    let myChart3 = new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: [], // 초기 레이블
+            datasets: [{
+                label: 'New Users',
+                data: [], // 초기 데이터
+                borderColor: 'blue',
+                borderWidth: 1,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '새로운 사용자 유입',
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true, // y축이 0부터 시작하도록 설정
+                    ticks: {
+                        stepSize: 5 // y축 간격을 5로 설정
+                    },
+                    suggestedMax: function(context) {
+                        const maxValue = Math.max(...context.chart.data.datasets[0].data);
+                        return maxValue + 5; // y축의 최대값을 데이터의 최대값보다 5만큼 많게 설정
+                    }
+                }
+            },
+            maintainAspectRatio: true
+        }
+    });
+    const ctx4 = document.getElementById('myChart4').getContext('2d');
+    let myChart4 = new Chart(ctx4, {
+        type: 'line',
+        data: {
+            labels: [], // 초기 레이블
+            datasets: [{
+                label: 'Screen/Page Views',
+                data: [], // 초기 데이터
+                borderColor: 'green',
+                borderWidth: 1,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '페이지 조회수',
+                    font: {
+                        size: 20,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true, // y축이 0부터 시작하도록 설정
+                    ticks: {
+                        stepSize: 5 // y축 간격을 5로 설정
+                    },
+                    suggestedMax: function(context) {
+                        const maxValue = Math.max(...context.chart.data.datasets[0].data);
+                        return maxValue + 5; // y축의 최대값을 데이터의 최대값보다 5만큼 많게 설정
+                    }
+                }
+            },
+            maintainAspectRatio: true
+        }
+    });
+   
+    // 현재날짜 ~ 7일 전 날짜 생성------------------------------------
+    function getLast7Days() {
+        let labels = [];
+       
+        let currentDate = new Date();
+       
+        for (let i = 0; i < 7; i++) {
+            let date = new Date(currentDate);
+            labels.unshift(date.toISOString().split('T')[0]);
+            currentDate.setDate(currentDate.getDate() - 1); // 하루씩 빼면서 7일 이전까지 날짜 생성
+        }
+       
+        return labels;
+    }
+   
+	// 차트 그리기-----------------------------------------------
+    function updateChart(responseData) {
+    	
+    	const data = responseData.data;
+    	
+    	// labels에 현재 날짜부터 7일 전까지의 날짜 추가
+        let labels = getLast7Days();
+    	
+    	// 들어오지 않은 데이터는 0으로 처리하기 위함
+        let activeUsers = new Array(7).fill(0);
+        let sessionDuration = new Array(7).fill(0);
+        let newUsers = new Array(7).fill(0);
+        let pageView = new Array(7).fill(0);
+        data.forEach(function(d) {
+        	let date = d.date;
+			
+        	// 현재~7일전까지의 날짜가 담긴 []와 현재날짜 일치하면 인덱스 반환
+        	let labelIndex = labels.indexOf(date);
+        	
+        	if (labelIndex !== -1) {
+                activeUsers[labelIndex] = d.activeuser;
+                sessionDuration[labelIndex] = d.sessionduration / 60;
+                newUsers[labelIndex] = d.newuser;
+                pageView[labelIndex] = d.pageview;
+            }
+        });
+       
+            myChart.data.labels = labels;
+            myChart.data.datasets[0].data = activeUsers;
+            myChart.update();
+           
+            myChart2.data.labels = labels;
+            myChart2.data.datasets[0].data = sessionDuration;
+            myChart2.update();
+            
+            myChart3.data.labels = labels;
+            myChart3.data.datasets[0].data = newUsers;
+            myChart3.update();
+            
+            myChart4.data.labels = labels;
+            myChart4.data.datasets[0].data = pageView;
+            myChart4.update();
+           
+      
+    }
+     // 데이터 가져오기-------------------------------------------
+     $.ajax({
+         url: "/api_analytics",
+         type: "GET",
+         dataType: "json",
+         success: function(response) {
+             updateChart(response);
+         },
+         error: function(xhr, status, error) {
+             console.error("데이터를 가져오는 데 실패했습니다:", status, error);
+             alert("데이터를 가져오는 데 실패했습니다.");
+         }
+     });
+});
+</script>
 <body id="admin">
 <%@ include file="../top/adminTop.jsp" %>
 <!-- ------------------------------------------------------------------------- -->
@@ -71,6 +312,19 @@
 			<h2>Server time</h2>
 			<span id="serverTime"></span>
 		</div>
+		<div class="analytics">
+			<h4>사이트 이벤트 통계</h4>
+			<div id="data-container">
+	    		<div class="contain1">
+		    		<canvas id="myChart"></canvas>
+		    		<canvas id="myChart2"></canvas>
+	    		</div>
+	    		<div class="contain2">
+		    		<canvas id="myChart3"></canvas>
+		    		<canvas id="myChart4"></canvas>
+	    		</div>
+	    	</div>
+	    </div>
 		<div class="member">
 			<h4>회원관리 (총 ${list.size()} 명, 탈퇴 : ${blist.size()} 명)</h4>
 			<table id="mem">
