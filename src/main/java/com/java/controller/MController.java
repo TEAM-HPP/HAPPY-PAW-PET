@@ -204,6 +204,8 @@ public class MController {
 	@RequestMapping("/kakao/oauth")
 	//@ResponseBody  //데이터 넘겨주기
 	public String oauth(String code) {
+		    try {
+		        // ... 기존 코드 (카카오 로그인 처리 부분) ...
 		
 		// [ 카카오 로그인 ]
 		//1차 code 받는 주소
@@ -288,7 +290,7 @@ public class MController {
 		
 		
 		//로그인의 섹션 생성후 로그인 완료
-		session.setAttribute("sessionId", kakaoDto.getId());
+		session.setAttribute("sessionId", String.valueOf(kakaoDto.getId()));
 		session.setAttribute("sessionName", kakaoDto.getProperties().getNickname());
 		session.setAttribute("session_email", kakaoDto.getKakao_account().getEmail());
 		
@@ -296,9 +298,21 @@ public class MController {
 		//return "2. response : "+response;
 		//return "2-2. kakaoToken class : "+oAuthTokenDto.getAccess_token();
 		
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        
+		        // 세션 무효화
+		        session.invalidate();
+		        
+		        // 에러 페이지로 리다이렉트 또는 다른 처리
+		        return "redirect:/error";  // 또는 원하는 경로로 리다이렉트
+		    }
+		    
 		return "redirect:/";
 
 	}
+	
+	
 	
 	//카카오 로그아웃
 	@RequestMapping("/kakao/logout")
