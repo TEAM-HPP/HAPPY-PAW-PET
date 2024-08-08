@@ -5,27 +5,32 @@
 
 <mapper namespace="com.java.dao.PetDiagnosisDao">
 	<!-- 진단 설문지 작성 저장 -->
-	<insert id="insertPetDiagnosisDB">
+	<insert id="insertPetDiagnosisDB" parameterType="com.java.dto.diagnosis.PetDiagnosisDto">
 		INSERT INTO petdiagnosis (dno, id, pname, pbirth, page, psex, psurgery, pweight, pbreed, condition, pfile, diagnosisdate, eye1, eye2, eye3, eye4, eye5, eyecolor, skin1, skin2, skin3, skin4, skin5)
 		VALUES (
 		diag_seq.nextval,
-		#{id},
-		#{pname},
-		#{pbirth},
-		EXTRACT(year FROM sysdate) - EXTRACT(year FROM #{pbirth}),
-		#{psex},
-		#{psurgery},
-		#{pweight},
-		#{pbreed},
-		#{condition},
-		#{pfile},
+		#{id, jdbcType=VARCHAR},
+		#{pname, jdbcType=VARCHAR},
+		#{pbirth, jdbcType=DATE},
+		EXTRACT(year FROM sysdate) - EXTRACT(year FROM #{pbirth, jdbcType=DATE}),
+		#{psex, jdbcType=VARCHAR},
+		#{psurgery, jdbcType=VARCHAR},
+		#{pweight, jdbcType=INTEGER},
+		#{pbreed, jdbcType=VARCHAR},
+		#{condition, jdbcType=VARCHAR},
+		#{pfile, jdbcType=VARCHAR},
 		sysdate,
-		<if test="condition == 'eye'">
-			#{eye1}, #{eye2}, #{eye3}, #{eye4}, #{eye5}, #{eyecolor}, 0, 0, 0, 0, 0
-		</if>
-		<if test="condition == 'skin'">
-			0, 0, 0, 0, 0, 'none', #{skin1}, #{skin2}, #{skin3}, #{skin4}, #{skin5}
-		</if>
+		<choose>
+			<when test="condition == 'eye'">
+				#{eye1, jdbcType=INTEGER}, #{eye2, jdbcType=INTEGER}, #{eye3, jdbcType=INTEGER}, #{eye4, jdbcType=INTEGER}, #{eye5, jdbcType=INTEGER}, #{eyecolor, jdbcType=VARCHAR}, 0, 0, 0, 0, 0
+			</when>
+			<when test="condition == 'skin'">
+				0, 0, 0, 0, 0, 'none', #{skin1, jdbcType=INTEGER}, #{skin2, jdbcType=INTEGER}, #{skin3, jdbcType=INTEGER}, #{skin4, jdbcType=INTEGER}, #{skin5, jdbcType=INTEGER}
+			</when>
+			<otherwise>
+				0, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0
+			</otherwise>
+		</choose>
 		)
 	</insert>
 
