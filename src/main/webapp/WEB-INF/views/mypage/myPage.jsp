@@ -65,7 +65,7 @@
         document.getElementById('modal_prewiew').src = "/image/welcome.jpg"; // 기본 이미지
     }
 }
-</script>
+</script>  
 </head>
 <body id="mypage">
 <%@ include file="../top/top.jsp" %>

@@ -107,10 +107,11 @@
 		    <ul class="page-num">
 		  
 		    <!-- first -->
-		    <c:if test="${map.page>map.startPage}">
+		    <c:if test="${map.page>1}">
 		    	<a href="qnaList?page=${map.startPage}"><li class="first"></li></a>
 		    </c:if>
-		    <c:if test="${map.page==map.startPage}">
+
+		    <c:if test="${map.page<=1}">
 		    	<li class="first"></li>
 		    </c:if>
 		   
@@ -147,7 +148,6 @@
 		    	<li class="last"></li>
 		    </c:if>
 		    </ul>
-		   
 			<div id="blank"></div>
 	    	<div class="write"><a href="#" onclick="wBtn()">질문하기</a></div>
     	</div>

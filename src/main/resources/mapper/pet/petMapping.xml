@@ -30,7 +30,8 @@
 	<!-- pet 정보 업데이트 -->
 	<update id="doUpdatePet">
 		update happypet
-		set pname=#{pname}, pweight=#{pweight}, pbirth=#{pbirth}, pgender=#{pgender}, psurgery=#{psurgery}, pfile=#{pfile}, page=EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM #{pbirth})
+		set pname=#{pname}, pweight=#{pweight}, pbirth=#{pbirth}, pgender=#{pgender}, psurgery=#{psurgery}, 
+		pfile=#{pfile}, page=EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM #{pbirth})
 		where id=#{id} and pno=#{pno}
 	</update>
 	<!-- 반려견 정보 삭제 -->

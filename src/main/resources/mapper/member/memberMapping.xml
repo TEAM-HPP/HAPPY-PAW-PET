@@ -31,7 +31,7 @@
 	<!-- 회원 정보 수정 후 업데이트 -->
 	<update id="doUpdateMem">
 		update happymem
-		set pw=#{pw}, birth=#{birth}, gender=#{gender}, phone=#{phone}, email=#{email} ,age=EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM #{birth})
+		set birth=#{birth}, gender=#{gender}, phone=#{phone}, email=#{email} ,age=EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM #{birth})
 		where id=#{id}
 	</update>
 	<!-- 회원 프로필 사진 업데이트 -->

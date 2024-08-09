@@ -95,13 +95,13 @@ public class MemberServiceImpl implements MemberService{
 		return mDto.getPw() != null && mDto.getPw().equals(check_pw);
 	}
 
-	@Override
+	@Override //비밀번호 변경을 위한 pw 조회
 	public boolean changePw(MemberDto mdto, String old_pw) {
 		MemberDto mDto = memberDao.checkPw(mdto);
 		return mDto.getPw() != null && mDto.getPw().equals(old_pw);
 	}
 
-	@Override
+	@Override //비밀번호 변경 저장
 	public void doChangePw(String id, String newPw2) {
 		memberDao.doChangePw(id, newPw2);
 	}

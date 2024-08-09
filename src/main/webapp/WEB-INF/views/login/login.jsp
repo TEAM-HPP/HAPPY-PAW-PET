@@ -14,7 +14,7 @@
 	  	<script>
 			$(function(){
 				$(".sbtn").click(function(){
-					var idChk = $("#saveCheckbox").is(":checked") ; //아이디 저장이 체크되었는지 담아준다.
+					var idChk = $("#saveCheckbox").is(":checked");
 					var id = $("#id").val();
 					var pw = $("#pw").val();
 					
@@ -29,7 +29,7 @@
 						return false;
 					}
 					
-					loginFrm.submit(); //form 형태로 controller로 입력값을 보냄
+					loginFrm.submit();
 					
 				});
 			});

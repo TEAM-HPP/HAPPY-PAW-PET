@@ -71,7 +71,7 @@
 		      <tr>
 		        <td colspan="6"><strong>다음글</strong> <span class="separator">|</span>
 		        <c:if test="${map.nextDto.qno != null}">
-		        	<a href="/board/qnaView?qno=${map.nextDto.qno }" id="text">${map.nextDto.qtitle }</a>
+		        	<a href="/board/qnaView?qno=${map.nextDto.qno }" id="nexttext">${map.nextDto.qtitle }</a>
 		        </c:if>
 		        <c:if test="${map.nextDto.qno == null}">
 		        	다음 글이 없습니다.
@@ -81,7 +81,7 @@
 		      <tr>
 		        <td colspan="6"><strong>이전글</strong> <span class="separator">|</span>
 		        <c:if test="${map.prevDto.qno != null}">
-		        	<a href="/board/qnaView?qno=${map.prevDto.qno }" id="text">${map.prevDto.qtitle }</a>
+		        	<a href="/board/qnaView?qno=${map.prevDto.qno }" id="prevtext">${map.prevDto.qtitle }</a>
 		        </c:if>
 		        <c:if test="${map.prevDto.qno == null}">
 		        	이전 글이 없습니다.

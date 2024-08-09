@@ -194,13 +194,6 @@ public class PController {
 		//회원가입하기
 		String id = (String)session.getAttribute("sessionId");
 		mDto.setId(id);
-		System.out.println("id : "+id);
-		System.out.println(mDto.getBirth());
-		System.out.println(mDto.getEmail());
-		System.out.println(mDto.getGender());
-		System.out.println(mDto.getPhone());
-		System.out.println(mDto.getPw());
-		
 		memberService.doUpdateMem(mDto);
 		
 		return "redirect:/mypage/myPage";

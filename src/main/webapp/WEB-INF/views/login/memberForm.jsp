@@ -75,6 +75,7 @@
 	</script>
 	<script>
 		// onclick형식, 비밀번호 생성
+		var newPwVar = false;
 		function newPw(){
 			var pw = $("#pw1").val();
 			var hasLetter = /[a-zA-Z]/.test(pw);
@@ -90,6 +91,7 @@
 				if(pw.length >= 10){
 					$("#NewPw").css("display","inline-block");
 					$("#NoPw").css("display","none");
+					newPwVar = true;
 				}else{
 					$("#NewPw").css("display","none");
 					$("#NoPw").css("display","inline-block");
@@ -98,6 +100,7 @@
 				if(pw.length >= 8){
 					$("#NewPw").css("display","inline-block");
 					$("#NoPw").css("display","none");
+					newPwVar = true;
 				}else{
 					$("#NewPw").css("display","none");
 					$("#NoPw").css("display","inline-block");
@@ -109,9 +112,11 @@
 			
 		}
 		//비밀번호 확인
+		var pwCheckVar = false;
 		function pwCheck(){
 			if($("#pw1").val() == $("#pw2").val()){
 				$("#pwConfirm").text('비밀번호가 일치합니다.').css('color','blue');
+				pwCheckVar = true;
 			}else{
 				$("#pwConfirm").text('비밀번호가 일치하지 않습니다.').css('color','red');
 			}
@@ -164,17 +169,21 @@
 				
 				if ($("input[name=termAll]:checked").length === 0){
 		        	alert("필수 약관에 동의하셔야합니다.")
-		        	
 		        	return false;
-		        }else{
-					memFrm.submit();
 		        }
-				
-			})
-			
-			
+				if (!newPwVar) {
+			        alert("새 비밀번호의 조건이 만족되지 않았습니다. 다시 입력해주세요.");
+			        $("#newPw1").focus();
+			        return false; // 폼 제출 방지
+			    }
+				if(!pwCheckVar){
+					alert("새 비밀번호와 확인 비밀번호가 일치하지 않습니다. 다시 입력해주세요.")
+	    			$("#newPw2").focus();
+	    			return false; 	
+	    	    }
+				memFrm.submit();
+		     });
 		});
-	
 	</script>
 	<title>HappyPawPet 회원가입창</title>
 	</head>

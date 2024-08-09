@@ -10,15 +10,15 @@
 	<link rel="stylesheet" type="text/css" href="/css/mypage/petEdit.css" />
 	<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<title>HappyPawPet 회원가입창</title>
+	<title>HappyPawPet 반려동물 정보 수정</title>
 	<script>
 	//몸무게 숫자만 가능!
 	$(function(){
 		  $("#pweight").keyup(function(){
 			  if(!this.value.replace(/[^-\.0-9]/g, '')){
-				$("#alert").text("* 숫자만 입력이 가능합니다.");
+				$("#alert").css("display","inline-block");
 			  }else{
-				  $("#alert").text("");
+				$("#alert").css("display","none");
 			  }
 			  this.value=this.value.replace(/[^-\.0-9]/g, '');
 		  });
@@ -61,7 +61,7 @@
 							<dd>
 								<input type="text" id="pweight" name="pweight" value="${pDto.pweight }" required />
 								<span>&nbsp;kg</span>
-								<span id="alert"></span>
+								<span id="alert">* 숫자만 입력이 가능합니다.</span>
 							</dd>
 						</dl>
 						<dl id="pbirth">

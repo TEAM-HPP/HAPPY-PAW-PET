@@ -68,7 +68,7 @@
 			<p>" 간편하게 찍은 사진 한 장으로</p>
 			<p>반려동물의 건강을 체크해보세요 "</p>
 			<p id="diag_sub">믿을 수 있는 정확성으로 반려동물의 건강을 지키는 우리의 프로그램을 경험해보세요</p>
-			<a href="#"><div class="diag_button">서비스 이용해보기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
+			<a href="/diagnosis/CheckTool"><div class="diag_button">서비스 이용해보기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
 		</div>
 		
 		</div>
@@ -80,7 +80,7 @@
 			<p>이제 당황하지 마세요 "</p>
 			<p id="emer_sub">응급매뉴얼을 통해 신속하고 정확한 응급처치를 배우세요</p>
 			<p id="emer_sub">소중한 반려동물의 생명을 지키는 중요한 가이드입니다</p>
-			<a href="#"><div class="emer_button">바로 확인하기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
+			<a href="/emergency/emergency"><div class="emer_button">바로 확인하기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
 		</div>
 		
 		<div id="emer"></div>
@@ -92,7 +92,7 @@
 					<p>" 따뜻한 집을 기다리는 친구들,</p>
 					<p>함께 해주세요 "</p>
 					<p id="adopt_sub">작은 발걸음이 그들에겐 큰 행복이 됩니다</p>
-					<a href="#"><div class="adopt_button">만나러 가기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
+					<a href="/adoption/animalList"><div class="adopt_button">만나러 가기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
 				</div>
 			</div>
 		</div>

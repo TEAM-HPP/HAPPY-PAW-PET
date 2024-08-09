@@ -59,7 +59,7 @@
 						<li class="titlesub"><a href="/diagnosis/CheckTool" class="titlesublink" id="q02">CheckTools</a></li>
 						<li class="titlesub"><a href="/emergency/emergency" class="titlesublink" id="q03">Emergency</a></li>
 						<li class="titlesub" id="q044">
-							<a href="#" class="titlesublink" id="q04">Adoption</a>
+							<a href="/adoption/animalList" class="titlesublink" id="q04">Adoption</a>
 							<ul class="submenuA">
 								<li><a href="/adoption/animalList" class="submenulink">입양공고</a></li>
 								<li><a href="/adoption/adopt_review" class="submenulink">커뮤니티</a></li>

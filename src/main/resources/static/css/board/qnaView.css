@@ -128,7 +128,7 @@ td {
 	padding-top: 40px; 
 }
 
-#text{
+#nexttext, #prevtext{
 	text-decoration: none;
 	color:black;
 }
