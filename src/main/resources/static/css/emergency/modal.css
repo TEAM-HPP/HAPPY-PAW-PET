@@ -1,69 +1,136 @@
-.modal_screen{width:100%; height:1160px;margin:100px auto;
-   	position:absolute; 
-   	visibility : visible;
-   	display:none;
-   	opacity : 0;
-   	}
-   	
-.modal_cancle{width:100%; height:1160px; cursor:pointer;
-background-color:#FAF7F0;
-}
-    
-.modal_screen2{width:1000px; height:1100px;margin:30px auto;padding:30px;
-    border: 5px solid #FAF7F0;
-    background-color:white;
-    border-radius: 20px;
-    box-shadow:2px 2px 5px 1px black;
-}
-
-.modal_box{width:100px; height:500px; position:relative;display:none;}
-
-.modal_content h3{margin:100px 0 30px 0;}
-
-.modal{width:1000px; height:1500px; 
-    padding:30px;
-    margin:0 auto;
-
+    .modal_screen {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(250, 247, 240, 0.8); /* Background overlay with site background color and transparency */
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        align-items: flex-start; /* Align items to start to add top margin */
+        justify-content: center;
+        transition: opacity 0.5s, visibility 0.5s;
+        z-index: 1000; /* Ensure modal is above other content */
+        padding-top: 100px; /* Increase padding to the top for more spacing */
     }
 
-.modal_title{width:900px; height:100px;
-    margin:0 auto;}
-    
-.modal_title>p{border-bottom: 1px solid black; padding-bottom:15px;}
+    .modal_cancle {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        z-index: 1001; /* Ensure cancel overlay is above modal */
+    }
 
-.modal_content{width:900px; height:1000px;
-    margin:50px auto;}
-.modal_list{width:900px; height:220px; 
-    display: flex; list-style: none;
-    padding:0px; margin:0px;}
+    .modal_screen2 {
+        width: 80%;
+        max-width: 800px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 20px; /* 둥근 모서리를 위해 수정 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fade-in 0.5s;
+        position: relative;
+        z-index: 1002; /* Ensure modal content is above cancel overlay */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: 90vh; /* 화면 높이의 90%까지 */
+        overflow-y: auto; /* 스크롤 가능 */
+        margin-top: 20px; /* Adjust margin to ensure spacing from the top */
+    }
 
-.modal_list div{padding:0 20px 0 0;}
-.modal_list .modal_step{width:200px;display: flex;
-    align-items: center; justify-content: center;}
-.modal_list .modal_text{width:400px;display: flex;
-    align-items: center;}
-.modal_step, .modal_text, .modal_img{
-    width:300px; height: 200px;
-   }
-.modal_text{font-size: 15px; color:black;}
-p{font-size: 13px;}
+    .modal_box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
+    .modal_content h3 {
+        margin: 20px 0 10px;
+        font-size: 24px;
+        text-align: center;
+    }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+    .modal_title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-@keyframes fade-out {
-  from {
-    opacity: 1;
+    .modal_title > p {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
 
-  }
-  to {
-    opacity: 0;
-  }
-}
+    .modal_content {
+        width: 100%;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal_list {
+        width: 100%;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modal_item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 40px; /* 각 step들 간격을 넓히기 위해 수정 */
+        width: 100%;
+        max-width: 750px; /* 중앙에 정렬되도록 최대 너비 설정 */
+    }
+
+    .modal_step {
+        font-weight: bold;
+        text-align: left;
+        margin-right: 20px;
+        flex-shrink: 0; /* 너비에 따라 크기 조정 방지 */
+        font-size: 18px; /* 글씨 크기 조정 */
+    }
+
+    .modal_text {
+        font-size: 16px;
+        color: #333;
+        margin-right: 20px;
+        flex: 1;
+        text-align: left;
+    }
+
+    .modal_img {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 150px;
+        height: auto;
+        flex-shrink: 0; /* 이미지 크기 조정 방지 */
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
