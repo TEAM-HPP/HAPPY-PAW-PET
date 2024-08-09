@@ -85,7 +85,18 @@ public class CheckToolController {
 		String pname = petdiagnosisDto.getPname();
 
 		String uFile = "";
-		String saveUrl = "/Users/igyuwon/upload/";
+		String saveUrl = "";
+
+		// 운영체제에 따라 저장 경로를 설정
+		String os = System.getProperty("os.name").toLowerCase();
+		if (os.contains("win")) {
+			saveUrl = "c:/upload/";
+		} else if (os.contains("mac")) {
+			saveUrl = "/Users/igyuwon/upload/";
+		} else {
+			// 다른 운영체제의 경우 기본 경로 설정 (예: 리눅스)
+			saveUrl = "/path/to/your/upload/";
+		}
 
 		if (!file.isEmpty()) {
 			long time = System.currentTimeMillis();
@@ -143,6 +154,7 @@ public class CheckToolController {
 
 		return "{\"error\": \"Unknown error\"}";
 	}
+
 
 	@RequestMapping("/diagnosis/comparePet") //반려동물 정보 비교
 	@ResponseBody

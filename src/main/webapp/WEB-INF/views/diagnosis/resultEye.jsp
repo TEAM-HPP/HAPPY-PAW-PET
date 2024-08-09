@@ -23,7 +23,8 @@
 	</div>
 	<div id="content-container">
 		<div id="prod-img">
-			<img src="/Users/igyuwon/upload/${file}" alt="Uploaded Pet Image" width="600" height="400">
+<%--			<img src="/Users/igyuwon/upload/${param.file}" alt="Uploaded Pet Image" width="600" height="400">--%>
+			<img src="${pageContext.request.contextPath}/upload/${param.file}" alt="Uploaded Pet Image" width="400" height="400">
 		</div>
 		<div id="result">
 			<h2 class="resultTitle">진단 결과</h2>

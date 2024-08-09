@@ -50,7 +50,7 @@
         var close_modal = document.querySelector(".modal");
         close_modal.style.display = "none";
         mainfileFrm.submit();
-        document.getElementById('modal_prewiew').src = "/upload/${mDto.profile }";
+        document.getElementById('modal_prewiew').src = "${pageContext.request.contextPath}/upload/${mDto.profile }";
     }
 	// 선택한 파일을 미리보기로 표시합니다.
 	function readURL(input) {
