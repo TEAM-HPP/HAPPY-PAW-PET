@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		function pBtn(){  // 비밀번호확인
+		function pwBtn(){  // 비밀번호확인
 			let pw = $("#pw").val();
 			
 			if (pw === "${sessionPw}"){
@@ -86,7 +86,7 @@
 								<label for="pw">비밀번호확인</label>
 							</dt>
 							<dd>
-								<input type="password" id="pw" name="pw" oninput="pBtn()" required />
+								<input type="password" id="pw" name="pw" oninput="pwBtn()" required />
 								<span id="pwConfirm">비밀번호를 확인하세요</span>
 							</dd>
 						</dl>

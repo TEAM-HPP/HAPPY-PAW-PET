@@ -58,9 +58,9 @@
 								<label for="pweight">무게</label>
 							</dt>
 							<dd>
-								<input type="text" id="pweight" name="pweight" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required />
+								<input type="text" id="pweight" name="pweight" required />
 								<span>&nbsp;(kg)</span>
-								<span>&nbsp;&nbsp;* 숫자만 입력 가능합니다.</span>
+								<span id="alert">&nbsp;&nbsp;</span>
 							</dd>
 						</dl>
 						<dl id="pbirth">
@@ -137,7 +137,7 @@
 							</dd>
 						</dl>
 					</fieldset>
-					<button type="submit" onclick="pBtn()">저장하기</button>
+					<button type="submit" class="pBtn">저장하기</button>
 				</form>
 			</div>
 		</section>

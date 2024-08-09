@@ -144,7 +144,7 @@ public class CheckToolController {
 		return "{\"error\": \"Unknown error\"}";
 	}
 
-	@RequestMapping("/diagnosis/comparePet")
+	@RequestMapping("/diagnosis/comparePet") //반려동물 정보 비교
 	@ResponseBody
 	public String comparePet(PetDiagnosisDto petdiagnosisDto) {
 		PetDto petDto = petService.comparePet(petdiagnosisDto);

@@ -39,7 +39,7 @@
 			var userId = $("#id").val();
 			var petName = $("#pname").val();
 
-			console.log("Submitting form with condition: " + selectedCondition);
+			//console.log("선택한 질환 유형: " + selectedCondition);
 
 			$.ajax({
 				url: "/diagnosis/comparePet",
