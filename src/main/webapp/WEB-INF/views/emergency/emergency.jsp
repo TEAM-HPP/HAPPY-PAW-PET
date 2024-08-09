@@ -90,7 +90,7 @@
                         <c:forEach items="${list}" var="eLDto">
                             <div class="owl-carousel-info-wrap item">
                                 <a class="go_content" id="${eLDto.emer_list_no}">
-                                    <img src='/image/water1.jpg' class="owl-carousel-image img-fluid" alt="">
+                                    <img src="${eLDto.emer_list_img}" class="owl-carousel-image img-fluid" alt="">
                                     <div class="owl-carousel-info">
                                         <h4 class="mb-2">
                                                 ${eLDto.emer_list_title}
