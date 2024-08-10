@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.AdoptLikelistDao">
+  <!-- 게시판 좋아요누르기 -->
+  <insert id="likeOn">
+  	insert into happyadoption_like (id, likebno) values (#{id}, #{bno})
+  </insert>
+  <!-- 게시판 좋아요 취소 -->
+  <delete id="likeOff">
+  	delete from happyadoption_like where id=#{id} and likebno=#{bno}
+  </delete>
+  <!-- 게시글당 좋아요 갯수 표시 -->
+  <select id="selectLikeCountByBno" resultType="int">
+  	select count(*) as like_cnt from happyadoption_like where likebno = #{bno}
+  </select>
+  <!-- 사용자 게시글 좋아요 클릭 여부 -->
+  <select id="isLikedByUser" resultType="boolean">
+  	select case when count(*) > 0 then 1 else 0
+  	end as is_liked
+  	from happyadoption_like where likebno = #{bno} and id=#{id}
+  </select>
+</mapper>
+

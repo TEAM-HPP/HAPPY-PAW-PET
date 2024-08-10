@@ -19,7 +19,7 @@ public class AdoptServiceImpl implements AdoptService {
 	public Map<String, Object> selectList(int page, String category, String searchWord) {
 
 		//----- 하단넘버링 ---------
-		int countPerPage = 10; //1페이지당 게시글수
+		int countPerPage = 8; //1페이지당 게시글수
 		int bottomPerNum = 10; //하단넘버링 개수
 		int countAll = adoptDao.selectCount(category,searchWord); //게시글 총개수
 

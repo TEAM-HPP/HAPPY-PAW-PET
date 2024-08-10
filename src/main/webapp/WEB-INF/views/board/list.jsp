@@ -98,7 +98,7 @@
 		    <ul class="page-num">
 			    <!-- first -->
 			    <c:if test="${map.page>map.startPage}">
-			    	<a href="list?page=${map.startPage}"><li class="first"></li></a>
+			    	<li class="first"><a href="list?page=${map.startPage}"></a></li>
 			    </c:if>
 			    <c:if test="${map.page==map.startPage}">
 			    	<li class="first"></li>
@@ -109,21 +109,21 @@
 			      <li class="prev"></li>
 			    </c:if>
 			    <c:if test = "${map.page>1 }">
-			    	<a href="list?page=${map.page-1}&category=${map.category}&searchWord=${map.searchWord}"><li class="prev"></li></a>
+			    	<li class="prev"><a href="list?page=${map.page-1}&category=${map.category}&searchWord=${map.searchWord}"></a></li>
 			    </c:if>
 			   
 			    <c:forEach var="i" begin="${map.startPage }" end="${map.endPage }" step="1">
 			    	<c:if test="${map.page == i}">
-			    		<li class="MyNum num"><div>${i}</div></li>
+			    		<li class="myNum num"><div>${i}</div></li>
 			    	</c:if>
 			    	<c:if test="${map.page != i}">
-			    	 	<a href="list?page=${i}&category=${map.category}&searchWord=${map.searchWord}"><li class="num"><div>${i}</div></li></a>
+			    	 	<li class="num"><a href="list?page=${i}&category=${map.category}&searchWord=${map.searchWord}">${i}</a></li>
 			    	 </c:if>
 			    </c:forEach>
 			   
 			    <!-- next 부분 -->
 			    <c:if test="${map.page<map.maxPage}">
-			    	<a href="list?page=${map.page+1}&category=${map.category}&searchWord=${map.searchWord}"><li class="next"></li></a>
+			    	<li class="next"><a href="list?page=${map.page+1}&category=${map.category}&searchWord=${map.searchWord}"></a></li>
 			    </c:if>
 			    <c:if test="${map.page>=map.maxPage}">
 			    	<li class="next"></li>
@@ -131,7 +131,7 @@
 			   
 			    <!-- last -->
 		 		<c:if test="${map.page<map.maxPage}">
-			    	<a href="list?page=${map.maxPage}&category=${map.category}&searchWord=${map.searchWord}"><li class="last"></li></a>
+			    	<li class="last"><a href="list?page=${map.maxPage}&category=${map.category}&searchWord=${map.searchWord}"></a></li>
 			    </c:if>
 			    <c:if test="${map.page>=map.maxPage}">
 			    	<li class="last"></li>

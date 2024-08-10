@@ -62,7 +62,7 @@
 							<a href="/adoption/animalList" class="titlesublink" id="q04">Adoption</a>
 							<ul class="submenuA">
 								<li><a href="/adoption/animalList" class="submenulink">입양공고</a></li>
-								<li><a href="/adoption/adopt_review" class="submenulink">커뮤니티</a></li>
+								<li><a href="/adoption/Cardlist" class="submenulink">커뮤니티</a></li>
 							</ul>
 						</li>
 						<c:choose>

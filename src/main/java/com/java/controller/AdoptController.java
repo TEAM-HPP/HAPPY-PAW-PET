@@ -1,7 +1,11 @@
 package com.java.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,24 +18,81 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.dto.AdoptDto;
+import com.java.dto.AdoptLikelistDto;
+import com.java.service.adopt.AdoptLikelistService;
 import com.java.service.adopt.AdoptService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdoptController {
 
 	@Autowired AdoptService adoptService; //IOC컨테이너에서 주입받음. 
+	@Autowired AdoptLikelistService adlikelistService;
+	@Autowired HttpSession session;
 	
-	@RequestMapping("/adoption/adopt_review") //게시판리스트
-	public ModelAndView adopt_review(@RequestParam(defaultValue = "1") int page,
+	
+	@RequestMapping("/adoption/Cardlist") //게시판리스트
+	public ModelAndView Cardlist(@RequestParam(defaultValue = "1") int page,
 			String category,String searchWord) {	
 		//리스트,검색 포함
 		Map<String, Object> map = adoptService.selectList(page,category,searchWord);
 		
+		// 사용자가 좋아요를 누른 게시글 리스트를 저장할 Set
+		String id = null;
+	    if (session != null) { // 세션이 null이 아닌지 확인
+	        id = (String) session.getAttribute("sessionId");
+	    }
+		
+		System.out.println("controller id : "+id);
+	    Set<Integer> likedBnoSet = new HashSet<>();
+		
+		// 각 bno에 대한 좋아요 수를 저장할 Map
+	    Map<Integer, Integer> likeCountMap = new HashMap<>();
+
+	    // list 안의 각 bno 값을 추출하고, 각 bno에 대한 좋아요 수 조회
+	    ArrayList<AdoptDto> list = (ArrayList<AdoptDto>) map.get("list");
+	    for (AdoptDto adDto : list) {
+	        int likeCount = adlikelistService.selectLikeCountByBno(adDto.getBno());
+	        likeCountMap.put(adDto.getBno(), likeCount);
+	        
+	        // 사용자가 이 게시글에 좋아요를 눌렀는지 확인
+	        if (id != null){
+	        	boolean isLiked = adlikelistService.isLikedByUser(id, adDto.getBno());
+	        	if (isLiked) {
+	        		likedBnoSet.add(adDto.getBno());
+	        	}
+	        }
+	    }
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("map",map);
-		mv.setViewName("adoption/adopt_review");
+		mv.addObject("likedBnoSet",likedBnoSet);
+		mv.addObject("likeCountMap",likeCountMap);
+		mv.setViewName("adoption/Cardlist");
 		return mv;
 	}//list
+	
+	@RequestMapping("/adoption/likeOn") //좋아요누르기
+	public void likeOn(@RequestParam("id") String id,@RequestParam("bno") int bno) {
+		//확인용
+		//System.out.println("controller id : "+id);
+		//System.out.println("controller bno : "+bno);
+		
+		adlikelistService.likeOn(id,bno);
+		
+	}
+	
+	@RequestMapping("/adoption/likeOff") //좋아요 취소
+	public void likeOff(@RequestParam("id") String id,@RequestParam("bno") int bno) {
+		//확인용
+		//System.out.println("controller id : "+id);
+		//System.out.println("controller bno : "+bno);
+		
+		adlikelistService.likeOff(id,bno);
+		
+	}
+	
 	
 	@RequestMapping("/adoption/view") //뷰페이지
 	public ModelAndView view(AdoptDto adDto,@RequestParam(defaultValue = "1") int page) {
@@ -74,7 +135,7 @@ public class AdoptController {
 		
 		adoptService.insertBoard(adDto);
 		
-		return "redirect:/adoption/adopt_review";
+		return "redirect:/adoption/Cardlist";
 	}
 	
 	@GetMapping("/adoption/notice") //공지사항 글쓰기 화면
@@ -105,7 +166,7 @@ public class AdoptController {
 		
 		adoptService.insertNotice(adDto);
 		
-		return "redirect:/adoption/adopt_review";
+		return "redirect:/adoption/Cardlist";
 	}
 	
 	@RequestMapping("/adoption/delete") //게시글 삭제
@@ -113,7 +174,7 @@ public class AdoptController {
 		
 		adoptService.deleteBoard(adDto);
 		
-		return "redirect:/adoption/adopt_review";
+		return "redirect:/adoption/Cardlist";
 	}
 	
 	@RequestMapping("/adoption/update") //수정페이지
@@ -181,7 +242,7 @@ public class AdoptController {
 		
 		adoptService.insertReply(adDto);
 		
-		return "redirect:/adoption/adopt_review";
+		return "redirect:/adoption/Cardlist";
 	}
 	
 }
