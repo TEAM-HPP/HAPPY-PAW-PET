@@ -18,18 +18,16 @@
 	<body >
 		<%@ include file="top/top.jsp" %>
 		<!--  ---------------------------------------------------------------------------->
-		<section>
-			<div id="banner">
-				<div id="set">
-					<div class="title">
-						<p>반려동물의 건강을</p>
-						<p>최우선으로 생각하는</p>
-						<p>헬스케어 서비스</p>
-					</div>
-					<div class="sub">
-						<p>당신의 관심과 사랑이</p>
-						<p>반려동물에게 더 건강한 삶을 선물합니다.</p>
-					</div>
+		<section class="banner">
+			<div id="set">
+				<div class="title">
+					<p>반려동물의 건강을</p>
+					<p>최우선으로 생각하는</p>
+					<p>헬스케어 서비스</p>
+				</div>
+				<div class="sub">
+					<p>당신의 관심과 사랑이</p>
+					<p>반려동물에게 더 건강한 삶을 선물합니다.</p>
 				</div>
 			</div>
 			<script>
@@ -47,21 +45,22 @@
 				  imgStart("R");
 				 });
 				 function imgStart(tp){
-				  clearInterval($("#banner").attr("timer"));
+				  clearInterval($(".banner").attr("timer"));
 				  if(tp == "R"){
-				  $("#banner").attr("timer", setInterval("imgChange()", 6000));
+				  $(".banner").attr("timer", setInterval("imgChange()", 6000));
 				  }
 				 }
 				 
 				 function imgChange(){
-					  $("#banner").css("background", img_arr[i]);
+					  $(".banner").css("background", img_arr[i]);
 					  i++;
 					  if (i==4) i=0;
 					  return i;
 				 }
 			</script>
+		</section>
 		<!-- --------------------------------------------------------------------------------------- -->
-		<div class="tools">
+		<section class="tools">
 		<div id="diagnose"></div>
 		
 		<div class="diag_content">
@@ -71,9 +70,9 @@
 			<a href="/diagnosis/CheckTool"><div class="diag_button">서비스 이용해보기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
 		</div>
 		
-		</div>
+		</section>
 		<!-- --------------------------------------------------------------------------------------- -->
-		<div class="emergency">
+		<section class="emergency">
 		
 		<div class="emer_content">
 			<p>" 반려동물 응급상황,</p>
@@ -84,9 +83,9 @@
 		</div>
 		
 		<div id="emer"></div>
-		</div>
+		</section>
 		<!-- ---------------------------------------------------------------------------- -->
-		<div class="adopt">
+		<section class="adopt">
 			<div id="adoption">
 				<div class="adopt_content">
 					<p>" 따뜻한 집을 기다리는 친구들,</p>
@@ -95,10 +94,9 @@
 					<a href="/adoption/animalList"><div class="adopt_button">만나러 가기&ensp;<i class="fa-solid fa-arrow-right"></i></div></a>
 				</div>
 			</div>
-		</div>
+		</section>
 		<!-- ---------------------------------------------------------------------------- -->
-    	</section>
 		<%@ include file="footer/footer.jsp" %>
-	
+		<!-- JavaScript for smooth scrolling -->
 	</body>
 </html>
