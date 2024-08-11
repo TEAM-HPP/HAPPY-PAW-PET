@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.dao.HappyAdoptionlikeDao">
+  <!-- 좋아요누른 게시글 총 개수-->
+  <select id="selectCount" resultType="int">
+    select count(*) from happyadoption h
+	join happyadoption_like hl on h.bno = hl.likebno
+    where hl.id = #{id}
+    <if test="category == 'btitle' or category == 'bcontent'">
+      and ${category} like '%'||#{searchWord}||'%'
+    </if>
+    <if test="category == 'all'">
+      and btitle like '%'||#{searchWord}||'%' or bcontent like '%'||#{searchWord}||'%'
+    </if>
+  </select>
+  <!-- 내가 좋아요 누른 게시글 불러오기 -->
+  <select id="selectList" resultType="com.java.dto.HappyAdoptionlikeDto">
+  	select * from 
+	(select row_number() over (order by bgroup desc, bstep asc) as rnum,
+	h.bno, h.id, btitle, bcontent, bdate, bgroup, bstep, bindent, bfile, bhit
+	from happyadoption h
+	join happyadoption_like hl on h.bno = hl.likebno
+	where hl.id = #{id}
+	<if test="category == 'btitle' or category == 'bcontent'">
+    	and ${category} like '%'||#{searchWord}||'%'
+    </if>
+    <if test="category == 'all'">
+    	and (btitle like '%'||#{searchWord}||'%' or bcontent like '%'||#{searchWord}||'%')
+    </if>
+	
+	)
+	where rnum between #{startRow} and #{endRow}
+  </select>
+</mapper>
+

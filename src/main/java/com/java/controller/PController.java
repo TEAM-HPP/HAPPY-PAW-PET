@@ -5,12 +5,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.java.dto.MemberDto;
 import com.java.dto.PetDto;
 import com.java.service.ByememService;
+import com.java.service.HappyAdoptionlikeService;
 import com.java.service.MemberService;
 import com.java.service.PetService;
 
@@ -32,6 +35,9 @@ public class PController {
 	@Autowired HttpSession session;
 	@Autowired MemberService memberService;
 	@Autowired ByememService byememSerivce;
+	@Autowired HappyAdoptionlikeService halikeService;
+	
+	
 
 	@RequestMapping("/mypage/myPage")  //마이페이지
 	public ModelAndView myPage() {
@@ -251,5 +257,26 @@ public class PController {
 		return "redirect:/"; //메인페이지로 이동
 	}
 
+	//-------------------------------------------------------------------------------------
+	//좋아요게시글 모아보기
+	@RequestMapping("/mypage/likelist")
+	public ModelAndView likelist(@RequestParam(defaultValue = "1") int page,
+			String category,String searchWord) {
+		
+		String id = null;
+		if (session != null) { // 세션이 null이 아닌지 확인
+			id = (String) session.getAttribute("sessionId");
+		}
+		System.out.println("controller id : "+id);
+		
+		Map<String, Object> map = halikeService.selectList(page,category,searchWord,id);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("map",map);
+		mv.setViewName("mypage/likelist");
+		
+		return mv;
+		
+	}
 	
 }

@@ -50,6 +50,9 @@ section{
 #blank2{
     width: 100%; height: 20px;
 }
+#blank5{
+    width: 100%; height: 10px;
+}
 .hello{
     width: 430px;
     height: 50px;
@@ -61,21 +64,29 @@ section{
     text-align: center;
 }
 .infoB {
-    width: 215px;
-    height: 45px;
+    width: 140px;
+    height: 40px;
     background: black;
-    color: white;
-	display: inline-block;
-    position: relative;
-    margin: 10px auto;
-    font-size: 20px;
-    font-weight: 650;
-	border-radius: 8px;
-    text-align: center;
-    padding-top: 7px;
+    margin: 10px auto 0px auto;
     box-sizing: border-box;
+    border-radius: 8px;
+    display: inline-block;
+    
+}
+
+.infoB a{
+	display: block;
+	width: 140px;
+    height: 33px;
+	color: white;
+    position: relative;
+	padding-top: 7px;
+    font-size: 16px;
+    font-weight: 650;
+    text-align: center;
     letter-spacing: 1px;
 }
+
 .infoC {
     width: 430px;
     height: 45px;
@@ -83,7 +94,7 @@ section{
     color: white;
 	display: inline-block;
     position: relative;
-    margin: 10px auto;
+    margin: 0px auto 10px auto;
     font-size: 20px;
     font-weight: 650;
 	border-radius: 8px;
@@ -93,7 +104,7 @@ section{
     letter-spacing: 1px;
 }
 
-#checkPW_button, #changePw_button{
+#checkPW_button, #changePw_button, #likelist_button{
 	top:20px;
 }
 table {

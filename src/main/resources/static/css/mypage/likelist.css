@@ -1,0 +1,287 @@
+@charset "UTF-8";
+/* Main Section */
+
+section {
+  text-align: center;
+  background-color:  #FAF7F0;
+  width: 100%; min-height: 800px; padding-bottom: 150px;
+}
+
+
+#blank1{width: 100%; height: 100px;}
+#blank2{width: 100%; height: 500px;}
+
+#main{
+	  width: 100%; 
+	  padding-bottom: 50px;
+	  box-sizing: border-box;}
+
+h1 {
+  position: relative;
+  top: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 40px;
+  font-weight: 650;
+}
+
+.wrapper {
+  position: relative;
+  top: 30px;
+}
+
+select {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 40px;
+  margin-left: -185px;
+  margin-top: -20px;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid #666666;
+  font-family: inherit;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+form > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 38px;
+  margin-left: -100px;
+  margin-top: -20px;
+  background-color: white;
+  display: inline-block;
+  border: 1px solid #666666;
+}
+
+input {
+  position: relative;
+  top: 4px;
+  left: 2px;
+  border:none;
+  font-size: 16px;
+  background-color: white;
+}
+
+input:active,
+input:focus,
+input:hover {
+  outline: none;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 106px;
+  margin-top: -20px;
+  background: #333;
+  color: white;
+  border: none;
+}
+
+/*------------------------------------------*/
+.ad_title{
+position: relative;
+top: 20px;
+padding-bottom: 35px;
+font-size: 20px; font-weight: 550;	
+}
+
+.ad_title > span{
+	font-size: 16px; font-weight: 500;
+}
+/*--------------------------------------------------------*/
+.card-container {
+    display: grid;
+    position: relative;
+    top: 100px;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    padding: 5px;
+}
+
+.card {
+    background-color: #FAF7F0;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    
+}
+
+    
+.card-image-container {
+    width: 100%;
+    padding-top: 75%;
+    padding-bottom: 20%;
+    position: relative;
+    overflow: hidden;
+}
+
+.card img.background {
+    position: absolute;
+    top: 15px;
+    left: 13%;
+    width: 175px;
+    height: 155px;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px 2px rgba(0, 0, 0, 0.6); /* 경계 흐리게 */
+    border-radius: 10px;
+}
+
+.card img.overlay {
+            position: absolute;
+            top: 42%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+            width: 190px;
+            height: 175px;
+        }
+.card img.overlay2 {
+            position: absolute;
+            top: 70%;
+            left: 54%;
+            transform: translate(-50%, -50%);
+            width: 175px;
+            height: 40px;
+        }
+.card .text-overlay h2{
+			font-family: "Gamja Flower", sans-serif;
+			font-weight: 900;
+            position: absolute;
+            top: 72%;
+            left: 54%;
+            transform: translate(-50%, -50%);
+            color: black;
+            font-size: 12px;
+            text-align: center;
+            z-index: 1; /* 텍스트가 이미지를 덮도록 설정 */
+        }
+
+.card > .like {
+	text-align: right;
+	position: relative;
+	
+}
+
+.card > .like .off{
+	display: flex;
+	width: 90px;
+	position: relative;
+	right: 55px;
+	display: inline-block;
+}
+.card > .like .on{
+	display: flex;
+	width: 90px;
+	position: relative;
+	right: 55px;
+	display: none;
+}
+
+.card > .like span{
+	display: inline-block;
+	color: black;
+	font-size: 28px;
+	font-weight: 600;
+}
+.card > .like p{
+	display: inline-block;
+	width: 20px;
+	margin-right: 10px;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+/*-------------------------------------------------------*/
+.page-num {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  top: 100px;
+  margin-top: 30px;
+}
+
+
+.page-num li {
+  width: 36px;
+  height: 35px;
+  text-align: center;
+  padding: 0;
+
+}
+.page-num li a{
+	display:block;
+	width: 36px;
+  	height: 35px;
+}
+
+.first {
+  background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_first.png) no-repeat;
+}
+
+.prev {
+  background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_prev.png) no-repeat;
+  margin-right: 8px;
+}
+
+.num {
+  height: 33px !important;
+  margin-right: 8px;
+  border: 1px rgb(233, 233, 233) solid;
+  background-color: rgb(233, 233, 233);
+}
+
+
+
+.myNum {
+  border: 1px #333 solid;
+  background-color: #333;
+  color:white;
+  
+}
+
+.num > a {
+  position: relative;
+  display:block;
+  width: 36px;
+  height: 35px;
+  top: 2px;
+  color: black;
+  font-weight: 550;
+}
+
+.num > div {
+  position: relative;
+  top: 2px;
+  font-weight: 550;
+}
+
+.next {
+  background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_next.png) no-repeat;
+}
+
+.last {
+  background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_last.png) no-repeat;
+}
+
+/*--------------------------------------------------------------------*/
+#blank {
+	width: 100%; height: 30px; position: relative; top: 150px;
+}

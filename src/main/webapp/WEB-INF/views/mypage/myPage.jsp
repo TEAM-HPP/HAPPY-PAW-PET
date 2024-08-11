@@ -102,9 +102,10 @@
                 <div id="info">
                         <div class="hello">${sessionName } 님 안녕하세요! &ensp;</div></a>
                     <div id="blank2"></div>
-                        <a href="/mypage/checkPw"><div class="infoB" id="checkPW_button">회원정보 수정</div></a>
-                        <a href="/mypage/changePw"><div class="infoB" id="changePw_button">비밀번호 변경</div></a>
-                    <div id="blank2"></div>
+                        <div class="infoB" id="checkPW_button"><a href="/mypage/checkPw">회원정보 수정</a></div>
+                        <div class="infoB" id="changePw_button"><a href="/mypage/changePw">비밀번호 변경</a></div>
+                        <div class="infoB" id="likelist_button"><a href="/mypage/likelist">좋아요한 게시물</a></div>
+                    <div id="blank5"></div>
                         <div class="infoC">${sessionName } 님의 반려동물 정보</div>
                         <div class="petlist">
 							<h4>반려동물정보관리 (총 ${plist.size()} 마리)</h4>
