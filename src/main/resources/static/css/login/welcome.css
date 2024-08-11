@@ -77,3 +77,19 @@ section{
     box-sizing: border-box;
     top: 80px;
 }
+/* 마이페이지 이동 */
+#go_mypage{
+    width: 300px; 
+    height: 60px; 
+    background-color: black; 
+    color: white;
+    display: inline-block; 
+    position: relative; 
+    margin: 20px auto; 
+    font-size: 23px; 
+    font-weight: 650;
+    border-radius: 10px; 
+    text-align: center; 
+    box-sizing: border-box;
+    top: 80px;
+}

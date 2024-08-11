@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+#memberForm{height: 2000px;}       
+section{position: relative; top:100px; left:0; height:100%; 
+	background-color: #FAF7F0; flex:1;}
+.subbanner { position: relative; width: 100%; height: 300px; background: url('/image/car_dog.jpg') no-repeat 0 -500px;
+			background-size: cover; }
+.main{position: relative; width: 1100px; height:800px; margin: 0 auto; 
+	  padding-top:60px; box-sizing: border-box;}
+.main > h2{ font-size: 35px; color: #342F2F; text-align: center;
+            font-family: Roboto;
+            font-optical-sizing: auto;
+            font-weight: 550;
+            font-style: normal; }
+
+form > h4{ width : 1100px; height :  36px; color: #333; 
+			font-size: 23px;
+            font-weight: 600;
+            box-sizing: border-box;
+            margin : 0 auto; margin-bottom: 10px;
+            padding: 0 0 10px 10px; }
+h4 > span { font-size: 13px; color: #555;}
+form{margin-top: 45px; margin-bottom: 30px;}
+form > button{ margin-top: 50px; margin-left: 5px; width:100%; height: 55px; background: #342F2F; color: white; font-size: 18px;
+            font-weight: bold; border: none; }
+
+.fieldset_class{
+	    width: 1100px;
+	    font-size: 14px;
+	    margin: 0 auto;
+	    border-top: 1px solid rgb(209, 209, 209);
+	    border-left: none;
+	    border-right: none;
+	    border-bottom: none;
+	    margin-bottom: 15px;
+}
+.fieldset_class dl dt {
+    float: left;
+    width: 250px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    background-color: rgb(246, 246, 246);
+}
+.fieldset_class dl dt div {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(/image/point.png) no-repeat 45% 88%;
+    position: relative;
+    left: 20px;
+    vertical-align: middle;
+}
+
+.fieldset_class dl dt label {
+    font-size: 16px;
+    font-weight: 700;
+    position: absolute;
+    padding-left: 25px;
+}
+
+.fieldset_class dl dd {
+    width: 850px;
+    float: left;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+input[type="text"] { height: 28px; }
+
+#nameF dt { height: 55px;}
+#nameF dd { height: 55px;}
+#nameF input { width: 276px;}
+#nameF dt label { padding-top: 16px;}
+#nameF dt div { top: 13px; }
+
+#idF dt { height: 55px;}
+#idF dd { height: 55px;}
+#idF input { width: 276px;}
+#idF dt label { padding-top: 16px;}
+#idF dt div { top: 13px; }
+
+input[type="password"] { height: 28px; display: inline-block;}
+#pwF dt { height: 110px;}
+#pwF dd { height: 110px;}
+#NewPw { display: none; width: 230px; height: 28px; margin: auto 8px;}
+#NewPw i{font-size: 18px;}
+#NoPw { display: none; width: 230px; height: 28px; margin: auto 8px;}
+#NoPw i{font-size: 18px;}
+#pwF input { width: 276px;}
+#pwF dt label { padding-top: 40px;}
+#pwF dt div { top: 35px; }
+#pwF span {display: block;  margin-top: 5px;}
+#pwConfirm {display: block;  margin-top: 5px; margin-left: 13px;}
+
+#pw2F dt { height: 60px;}
+#pw2F dd { height: 60px;}
+#pw2F input { width: 276px;}
+#pw2F dt label { padding-top: 16px;}
+#pw2F dt div { top: 15px; }
+#pw2F span {display: inline-block;  margin-top: 5px; }
+
+#email dt { height: 60px;}
+#email dd { height: 60px;}
+#mail_id { width: 150px;}
+#mail_tail { width: 200px;}
+#email dt label { padding-top: 16px;}
+#email dt div { top: 15px; }
+#email span {display: inline-block;  margin-top: 5px; }
+#email dd select { width: 150px; height: 25px; font-size: 13px;color: #666; }
+
+#tell dt { height: 60px;}
+#tell dd { height: 60px;}
+#f_tell { width: 80px;}
+#m_tell { width: 100px;}
+#l_tell { width: 100px;}
+#tell dt label { padding-top: 16px;}
+#tell dt div { top: 15px; }
+#tell span {display: inline-block;  margin-top: 5px; }
+
+#birth dt { height: 60px;}
+#birth dd { height: 60px;}
+#birth dt label { padding-top: 16px; left: 9px;}
+#birth dt div { top: 15px; }
+#birth #type {display: inline-block;  margin-top: 5px; margin-left: 10px;}
+
+#gender_w dt { height: 60px;}
+#gender_w dd { height: 60px;}
+#gender_w dd div { padding-top: 10px;}
+#gender_w dd div label { padding-right: 10px;}
+#gender_w dt label { padding-top: 16px; left: 9px;}
+#gender_w dt div { top: 15px; }
+
+#surgery_yn dt { height: 60px;}
+#surgery_yn dd { height: 60px;}
+#surgery_yn dd div { padding-top: 10px;}
+#surgery_yn dd div label { padding-right: 10px;}
+#surgery_yn dt label { padding-top: 16px;}
+#surgery_yn dt div { top: 15px; }
+
+/*약관동의 css--------------------------------------------------------------------------------*/
+.agreeForm{position: relative; top:10px; left:0; height:100%;}
+
+.term__{position: relative; width: 100%; height:600px; margin: 0 auto; 
+    padding-top:60px; box-sizing: border-box;}
+
+h1{display: block; width : 1100px; height :  45px; color: #333; 
+			font-size: 23px;
+            font-weight: 650;
+            box-sizing: border-box;
+            margin : 0 auto; margin-bottom: 5px;
+            padding: 0 0 10px 10px; }
+
+.total__{width: 100%; height: 70px;}
+
+.checkTerm{width: 100%; 
+    height: auto; 
+    position: relative; align-items: center;
+    display: flex;
+    flex-grow: 1;}
+
+#border {border-top: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;}
+
+input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 40px;
+    cursor: pointer;
+    height: auto;
+    align-items: center;
+    opacity: 0;
+    z-index: 1;
+}
+
+.checkTerm label{font-weight: 600; height: 40px; display: flex;
+    justify-content: flex-start; align-items: center;
+    font-size: 16px; padding-left: 20px;}
+
+.alert{font-size: 15px; color: #555;
+    line-height: 150%;
+    padding-left: 28px;}
+
+.termList{padding:10px 0 10px 0; border: none; margin: 5px; width: 485px; height: auto; list-style: none;}
+
+.termList .checkTerm > label {border:none;}
+
+textarea{display: block; width: 100%; height: 150px; padding-bottom: 10px;
+		font-size: 15px; box-sizing: border-box;}
+
+.checkTerm .icon-before-check{
+    font-size: 24px;
+    color: #333;
+}
+.checkTerm .icon-after-check{
+    display: none;
+    font-size: 24px;
+    color: #333;
+}
+
+

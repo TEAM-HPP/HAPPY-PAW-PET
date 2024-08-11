@@ -25,7 +25,14 @@
 	                감사합니다.
 	                <strong>회원가입이 완료되었습니다.</strong>
 	            </p>
-	            <button type="button" class="mBtn" id="go_login" onClick="location.href='login'">로그인 하러 가기</button>
+	            <c:choose>
+	            	<c:when test="${sessionId != null}">
+			            <button type="button" class="mBtn" id="go_mypage" onclick="location.href='/mypage/myPage'">마이페이지로 이동</button>
+	            	</c:when>
+	            	<c:otherwise>
+	            		<button type="button" class="mBtn" id="go_login" onclick="location.href='/login/login'">로그인하러 가기</button>
+	            	</c:otherwise>
+	            </c:choose>
 	        </div>
         </div>	
     </section>
