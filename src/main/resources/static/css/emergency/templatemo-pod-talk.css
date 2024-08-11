@@ -9,7 +9,7 @@ https://templatemo.com/tm-584-pod-talk
 
 
 /*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )             
+  CUSTOM PROPERTIES ( VARIABLES )
 -----------------------------------------*/
 :root {
   --white-color:                  #ffffff;
@@ -48,12 +48,12 @@ https://templatemo.com/tm-584-pod-talk
 
 body {
   background-color: var(--white-color);
-  font-family: var(--body-font-family); 
+  font-family: var(--body-font-family);
 }
 
 
 /*---------------------------------------
-  TYPOGRAPHY               
+  TYPOGRAPHY
 -----------------------------------------*/
 
 
@@ -71,7 +71,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--title-font-family); 
+  font-family: var(--title-font-family);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -113,7 +113,7 @@ ul li {
   font-weight: var(--font-weight-light);
 }
 
-a, 
+a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
@@ -141,7 +141,7 @@ strong {
 
 
 /*---------------------------------------
-  SECTION               
+  SECTION
 -----------------------------------------*/
 .section-title-wrap {
   position: relative;
@@ -200,7 +200,7 @@ main {
 
 
 /*---------------------------------------
-  CUSTOM ICON COLOR               
+  CUSTOM ICON COLOR
 -----------------------------------------*/
 .custom-icon {
   color: var(--primary-color);
@@ -208,7 +208,7 @@ main {
 
 
 /*---------------------------------------
-  CUSTOM BUTTON               
+  CUSTOM BUTTON
 -----------------------------------------*/
 .custom-btn {
   background: var(--custom-btn-bg-color);
@@ -247,7 +247,7 @@ main {
 
 
 /*---------------------------------------
-  SITE HEADER              
+  SITE HEADER
 -----------------------------------------*/
 .site-header {
   background-image: url('../images/templatemo-wave-header.jpg'), linear-gradient(#348CD2, #FFFFFF);;
@@ -264,7 +264,7 @@ main {
 
 
 /*---------------------------------------
-  NAVIGATION              
+  NAVIGATION
 -----------------------------------------*/
 .navbar {
   background-color: transparent;
@@ -305,7 +305,7 @@ main {
 .navbar-nav .nav-link {
   display: inline-block;
   color: var(--section-bg-color);
-  font-family: var(--title-font-family); 
+  font-family: var(--title-font-family);
   font-size: var(--menu-font-size);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
@@ -320,7 +320,7 @@ main {
   padding-left: 18px;
 }
 
-.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
   color: var(--secondary-color);
 }
@@ -353,7 +353,7 @@ main {
 .navbar .dropdown-item {
   display: inline-block;
   color: var(--p-bg-color);
-  font-family: var(--title-font-family); 
+  font-family: var(--title-font-family);
   font-size: var(--menu-font-size);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
@@ -361,9 +361,9 @@ main {
   position: relative;
 }
 
-.navbar .dropdown-item.active, 
+.navbar .dropdown-item.active,
 .navbar .dropdown-item:active,
-.navbar .dropdown-item:focus, 
+.navbar .dropdown-item:focus,
 .navbar .dropdown-item:hover {
   background: transparent;
   color: var(--secondary-color);
@@ -473,7 +473,7 @@ main {
 
 
 /*---------------------------------------
-  CAROUSEL        
+  CAROUSEL
 -----------------------------------------*/
 .hero-section {
   background-color:#FAF7F0;
@@ -595,14 +595,14 @@ main {
   margin-bottom : 50px;
 }
 
-.owl-theme .owl-dots .owl-dot.active span, 
+.owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
   background: var(--secondary-color);
 }
 
 
 /*---------------------------------------
-  CUSTOM BLOCK              
+  CUSTOM BLOCK
 -----------------------------------------*/
 .custom-block {
   border: 2px solid var(--primary-color);
@@ -796,7 +796,7 @@ main {
 
 
 /*---------------------------------------
-  PROIFLE BLOCK               
+  PROIFLE BLOCK
 -----------------------------------------*/
 .profile-block {
   margin-top: 10px;
@@ -827,7 +827,7 @@ main {
 
 
 /*---------------------------------------
-  ABOUT & TEAM SECTION               
+  ABOUT & TEAM SECTION
 -----------------------------------------*/
 .about-image {
   border-radius: var(--border-radius-medium);
@@ -851,7 +851,7 @@ main {
 
 
 /*---------------------------------------
-  PAGINATION               
+  PAGINATION
 -----------------------------------------*/
 .pagination {
   border: 1px solid #dee2e6;
@@ -886,7 +886,7 @@ main {
 
 
 /*---------------------------------------
-  CONTACT               
+  CONTACT
 -----------------------------------------*/
 .contact-info p strong {
   font-family: var(--title-font-family);
@@ -914,7 +914,7 @@ main {
 
 
 /*---------------------------------------
-  SUBSCRIBE FORM               
+  SUBSCRIBE FORM
 -----------------------------------------*/
 .subscribe-form-wrap {
   border: 1px solid var(--white-color);
@@ -948,7 +948,7 @@ main {
 
 
 /*---------------------------------------
-  CUSTOM FORM               
+  CUSTOM FORM
 -----------------------------------------*/
 .custom-form .form-control {
   border-radius: var(--border-radius-small);
@@ -986,7 +986,7 @@ main {
 
 
 /*---------------------------------------
-  SEARCH FORM               
+  SEARCH FORM
 -----------------------------------------*/
 .search-form .form-control {
   border: 0;
@@ -1007,7 +1007,7 @@ main {
 
 
 /*---------------------------------------
-  SITE FOOTER              
+  SITE FOOTER
 -----------------------------------------*/
 .site-footer {
   background-image: url('../images/templatemo-wave-footer.jpg'), linear-gradient(#FFFFFF, #348CD2);
@@ -1071,7 +1071,7 @@ main {
 
 
 /*---------------------------------------
-  SOCIAL ICON               
+  SOCIAL ICON
 -----------------------------------------*/
 .social-icon {
   margin: 0;
@@ -1105,7 +1105,7 @@ main {
 
 
 /*---------------------------------------
-  RESPONSIVE STYLES               
+  RESPONSIVE STYLES
 -----------------------------------------*/
 @media screen and (min-width: 2160px) {
 	.hero-section {
@@ -1152,9 +1152,9 @@ main {
   h6 {
     font-size: 18px;
   }
-  
+
   .hero-section {
-	  background-size: 160% 66%; 
+	  background-size: 160% 66%;
 	  /* T o o p l a t e . c o m   C u s t o m i z e d */
 	}
 
