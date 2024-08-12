@@ -28,31 +28,86 @@
 	color: black;
 }
 
+.diagnosis-able > ul > li:last-child {
+	margin-bottom: 50px; /* 마지막 항목 아래에 추가 공간을 더해 겹치는 문제 해결 */
+}
+
 /*---------------------------------------------------*/
 
 .diagnosis-history {
-	position: relative; top: 60px;
-	margin-top: 20px;
+	position: static;
+	margin-top: 60px; /* 추가 간격을 위해 top 값 조정 */
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	max-width: 300px;
+	z-index: 1;
+	overflow: hidden; /* 스크롤바를 추가할 영역을 숨김 */
 }
 
-.diagnosis-history > h3{
-	width: 90%;
-	font-size: 20px;
+.diagnosis-history > ul {
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0;
+	max-height: 400px; /* 스크롤바를 나타낼 높이 설정 */
+	overflow-y: auto; /* 세로 스크롤바 추가 */
 }
 
-.diagnosis-history > ul{
-	position: relative;
-	left: 50px;
-	top: 15px;
-	width: 150px;
+.diagnosis-history > ul > li.diagnosis-item {
+	background-color: #fff;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.diagnosis-header {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+}
+
+.diagnosis-content {
+	text-align: left; /* Ensure left alignment */
+	margin-left: 0; /* Reset any left margin if it exists */
+	padding-left: 0; /* Reset any left padding if it exists */
+	color: #555; /* Keep existing styling */
+	font-size: 12px; /* Keep existing styling */
+}
+
+
+.diagnosis-id {
+	font-size: 12px;
+	color: #444;
+}
+
+.diagnosis-date {
+	font-size: 12px;
+	color: #888;
+}
+
+.diagnosis-content strong {
+	color: #333;
+}
+
+.diagnosis-history > h3 {
+	font-size: 22px;
+	margin-bottom: 20px; /* 제목과 카드 사이의 간격을 추가 */
+	color: #333;
+}
+
+.diagnosis-history > ul > li.diagnosis-item {
+	background-color: #fff;
+	padding: 15px;
+	margin-bottom: 15px; /* 카드 사이의 간격을 조정 */
+	border-radius: 8px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.diagnosis-item {
 	text-align: left;
-}
-
-.diagnosis-history > ul >li{
-	margin-top: 5px;
-	font-size: 15px;
-}
-
-.diagnosis-history > ul > li > a{
-	color: black;
 }

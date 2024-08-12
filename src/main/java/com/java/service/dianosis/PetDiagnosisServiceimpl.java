@@ -6,16 +6,23 @@ import org.springframework.stereotype.Service;
 import com.java.dao.PetDiagnosisDao;
 import com.java.dto.diagnosis.PetDiagnosisDto;
 
+import java.util.List;
+
 @Service
 public class PetDiagnosisServiceimpl implements PetDiagnosisService {
+
 
 	@Autowired PetDiagnosisDao pdDao;
 
 
-	@Override  //진단설문지 작성 저장
+	@Override
 	public void insertPetDiagnosisDB(PetDiagnosisDto petdiagnosisDto) {
-
 		pdDao.insertPetDiagnosisDB(petdiagnosisDto);
+	}
+
+	@Override
+	public List<PetDiagnosisDto> getDiagnosisHistoryByUserId(String userId) {
+		return pdDao.findDiagnosisHistoryByUserId(userId);
 	}
 
 }

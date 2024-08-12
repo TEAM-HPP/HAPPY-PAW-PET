@@ -49,10 +49,10 @@ public class CheckToolController {
 	@Autowired
 	ProductService productService;
 
-	@GetMapping("/diagnosis/CheckTool")
-	public String CheckTool() {
-		return "diagnosis/CheckTool";
-	}
+//	@GetMapping("/diagnosis/CheckTool")
+//	public String CheckTool() {
+//		return "diagnosis/CheckTool";
+//	}
 
 	@GetMapping("/diagnosis/resultEye")
 	public String resultEye(@RequestParam("disease") String disease,
@@ -60,7 +60,7 @@ public class CheckToolController {
 							@RequestParam("userId") String userId,
 							@RequestParam("petName") String petName,
 							Model model) {
-		// Add products to model
+
 		List<ProductDto> nutritionProducts = productService.getProductsByTypeAndDisease("영양제", disease);
 		List<ProductDto> foodProducts = productService.getProductsByTypeAndDisease("사료", disease);
 		List<ProductDto> medicineProducts = productService.getProductsByTypeAndDisease("안약", disease);
@@ -69,7 +69,6 @@ public class CheckToolController {
 		model.addAttribute("foodProducts", foodProducts);
 		model.addAttribute("medicineProducts", medicineProducts);
 
-		// Add user and pet information to model
 		model.addAttribute("userId", userId);
 		model.addAttribute("petName", petName);
 		model.addAttribute("disease", disease);
@@ -170,4 +169,26 @@ public class CheckToolController {
 		petService.joinPetFromDiagnosis(petdiagnosisDto);
 		return "OK";
 	}
+
+	@GetMapping("/diagnosis/CheckTool")
+	public String getDiagnosisHistory(HttpSession session, Model model) {
+		// 진단 이력 확인 로그
+		System.out.println("진단 이력 페이지 요청됨");
+
+		String userId = (String) session.getAttribute("sessionId");
+		System.out.println("sessionId : "+userId);
+
+		if (userId == null) {
+			System.out.println("로그인이 안되어있습니다.");
+			return "redirect:/login";
+		}
+
+		List<PetDiagnosisDto> diagnosisHistory = pdService.getDiagnosisHistoryByUserId(userId);
+		System.out.println("Number of diagnosis records found: " + diagnosisHistory.size());
+
+		model.addAttribute("diagnosisHistory", diagnosisHistory);
+//		return "diagnosis/diagnosisHistory"; // JSP 파일명
+		return "diagnosis/CheckTool";
+	}
+
 }
