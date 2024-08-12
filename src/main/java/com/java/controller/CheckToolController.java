@@ -180,7 +180,7 @@ public class CheckToolController {
 
 		if (userId == null) {
 			System.out.println("로그인이 안되어있습니다.");
-			return "redirect:/login";
+			return "redirect:/login/login";
 		}
 
 		List<PetDiagnosisDto> diagnosisHistory = pdService.getDiagnosisHistoryByUserId(userId);
