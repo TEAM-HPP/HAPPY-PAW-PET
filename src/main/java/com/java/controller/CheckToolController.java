@@ -184,7 +184,8 @@ public class CheckToolController {
 			System.out.println("Number of diagnosis records found: " + diagnosisHistory.size());
 			
 			model.addAttribute("diagnosisHistory", diagnosisHistory);
-			
+
+			return "redirect:/login/login";
 		}
 
 		return "diagnosis/CheckTool";
