@@ -26,6 +26,16 @@
 				
 			}
 			
+			
+			function checkBtn(){
+				if (${sessionId == null}){
+					alert("로그인 이후 이용 가능한 페이지입니다.");
+					location.href="/login/login";
+				}else{
+					location.href="/diagnosis/CheckTool";
+				}
+			}
+			
 			 $(document).ready(function(){
 
 					$('.submenu').hide();
@@ -56,7 +66,7 @@
 								<li><a href="/board/qnaList" class="submenulink">Q&A</a></li>
 							</ul>
 						</li>
-						<li class="titlesub"><a href="/diagnosis/CheckTool" class="titlesublink" id="q02">CheckTools</a></li>
+						<li class="titlesub"><a href="#" class="titlesublink" id="q02" onclick="checkBtn()">CheckTools</a></li>
 						<li class="titlesub"><a href="/emergency/emergency" class="titlesublink" id="q03">Emergency</a></li>
 						<li class="titlesub" id="q044">
 							<a href="/adoption/animalList" class="titlesublink" id="q04">Adoption</a>

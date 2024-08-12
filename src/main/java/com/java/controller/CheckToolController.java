@@ -173,21 +173,20 @@ public class CheckToolController {
 	@GetMapping("/diagnosis/CheckTool")
 	public String getDiagnosisHistory(HttpSession session, Model model) {
 		// 진단 이력 확인 로그
-		System.out.println("진단 이력 페이지 요청됨");
+		//System.out.println("진단 이력 페이지 요청됨");
 
 		String userId = (String) session.getAttribute("sessionId");
-		System.out.println("sessionId : "+userId);
+		//System.out.println("sessionId : "+userId);
 
-		if (userId == null) {
+		if (userId != null) {
 			System.out.println("로그인이 안되어있습니다.");
-			return "redirect:/login";
+			List<PetDiagnosisDto> diagnosisHistory = pdService.getDiagnosisHistoryByUserId(userId);
+			System.out.println("Number of diagnosis records found: " + diagnosisHistory.size());
+			
+			model.addAttribute("diagnosisHistory", diagnosisHistory);
+			
 		}
 
-		List<PetDiagnosisDto> diagnosisHistory = pdService.getDiagnosisHistoryByUserId(userId);
-		System.out.println("Number of diagnosis records found: " + diagnosisHistory.size());
-
-		model.addAttribute("diagnosisHistory", diagnosisHistory);
-//		return "diagnosis/diagnosisHistory"; // JSP 파일명
 		return "diagnosis/CheckTool";
 	}
 

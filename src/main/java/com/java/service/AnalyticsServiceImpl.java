@@ -17,7 +17,11 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 		List<DataDto> data = Arrays.asList(
             new DataDto(LocalDate.of(2024, 8, 6), 1.0, 758.806, 1.0, 7.0),
             new DataDto(LocalDate.of(2024, 8, 7), 1.0, 1.771, 0.0, 2.0),
-            new DataDto(LocalDate.of(2024, 8, 8), 1.0, 0.0, 0.0, 0.0)
+            new DataDto(LocalDate.of(2024, 8, 8), 1.0, 0.0, 0.0, 0.0),
+            new DataDto(LocalDate.of(2024, 8, 9), 7.0, 245.332, 0.0, 0.0),
+            new DataDto(LocalDate.of(2024, 8, 10), 3.0, 33.56, 1.0, 15.0),
+            new DataDto(LocalDate.of(2024, 8, 11), 1.0, 0.0, 0.0, 0.0),
+            new DataDto(LocalDate.of(2024, 8, 12), 1.0, 0.0, 0.0, 0.0)
         );
 		
         return new AnalyticsDto(data);

@@ -52,6 +52,7 @@ public class AdoptController {
 
 	    // list 안의 각 bno 값을 추출하고, 각 bno에 대한 좋아요 수 조회
 	    ArrayList<AdoptDto> list = (ArrayList<AdoptDto>) map.get("list");
+	   
 	    for (AdoptDto adDto : list) {
 	        int likeCount = adlikelistService.selectLikeCountByBno(adDto.getBno());
 	        likeCountMap.put(adDto.getBno(), likeCount);
@@ -96,15 +97,29 @@ public class AdoptController {
 	
 	@RequestMapping("/adoption/view") //뷰페이지
 	public ModelAndView view(AdoptDto adDto,@RequestParam(defaultValue = "1") int page) {
-		//현재글,이전글,다음글
+		
 		Map<String, Object> map = adoptService.selectOne(adDto);
+		
+		Set<Integer> likedBnoSet = new HashSet<>();
+		
+		String id = null;
+	    if (session != null) {
+	        id = (String) session.getAttribute("sessionId");
+	        boolean isLiked = adlikelistService.isLikedByUser(id, adDto.getBno());
+	        if (isLiked) {
+        		likedBnoSet.add(adDto.getBno());
+        	}
+	    }
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("map",map);
 		mv.addObject("page",page);
+		mv.addObject("likedBnoSet",likedBnoSet);
 		mv.setViewName("adoption/view");
 		return mv;
 	}//view
+	
+	
 	
 	@GetMapping("/adoption/adopt_writing") //글쓰기 화면
 	public String adopt_writing() {
