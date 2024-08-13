@@ -1,12 +1,15 @@
 package com.java.controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +19,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.analytics.data.v1beta.BetaAnalyticsDataClient;
+import com.google.analytics.data.v1beta.BetaAnalyticsDataSettings;
+import com.google.analytics.data.v1beta.DateRange;
+import com.google.analytics.data.v1beta.Dimension;
+import com.google.analytics.data.v1beta.Metric;
+import com.google.analytics.data.v1beta.OrderBy;
+import com.google.analytics.data.v1beta.Row;
+import com.google.analytics.data.v1beta.RunReportRequest;
+import com.google.analytics.data.v1beta.RunReportResponse;
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.auth.oauth2.GoogleCredentials;
 import com.java.dto.AdoptDto;
-import com.java.dto.AnalyticsDto;
 import com.java.dto.ByememDto;
 import com.java.dto.MemberDto;
 import com.java.dto.PetDto;
 import com.java.dto.board.BcmAgeDto;
 import com.java.dto.board.BcmDto;
 import com.java.dto.board.BoardCommentDto;
-import com.java.dto.board.BoardDto;
 import com.java.dto.qna.QnaAnswerDto;
-import com.java.dto.qna.QnaDto;
 import com.java.service.AbandonedService;
-import com.java.service.AnalyticsService;
 import com.java.service.ByememService;
 import com.java.service.MemberService;
 import com.java.service.PetService;
@@ -56,27 +66,70 @@ public class AdController {
 	@Autowired AdoptService adoptService;
 	@Autowired
 	private AbandonedService abandonedService; // AnimalService 주입
-	@Autowired
-	private AnalyticsService analyticsService;
 
-
-
+	
 	@RequestMapping("/admin/admin")  //관리자페이지 메인
 	public String admin() {
 
 		return "admin/admin";
 	}
 	
-	@GetMapping("/api_analytics")
-    @ResponseBody
-    private ResponseEntity<AnalyticsDto> getAnalyticsDataFromService() {
-    	
-		AnalyticsDto analDto = analyticsService.getData();
-        
-		//System.out.println("datalist : "+analDto);
-        
-		return ResponseEntity.ok(analDto);
-    }
+	@GetMapping("/admin/analyticsTest")
+	@ResponseBody
+	 public List<Map<String, String>> getAnalyticsData() throws Exception {
+
+			System.clearProperty("GOOGLE_APPLICATION_CREDENTIALS");
+	        System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", "C:\\Happypawpet\\Auth\\happypawpetServiceaccount.json");
+
+	        // GA4 Property ID 설정
+	        String propertyId = "453125441";
+	        
+	        List<Map<String, String>> analyticsDataList = new ArrayList<>();
+	        
+	        LocalDate endDate = LocalDate.now();
+	        LocalDate startDate = endDate.minusDays(7);
+	        
+	        InputStream serviceAccountStream = AdController.class.getClassLoader().getResourceAsStream("auth/happypawpetServiceaccount.json");
+            if (serviceAccountStream == null) {
+                throw new FileNotFoundException("Service account file not found in resources.");
+            }
+            GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccountStream);
+            
+	        BetaAnalyticsDataSettings settings = BetaAnalyticsDataSettings.newBuilder().setCredentialsProvider(FixedCredentialsProvider.create(credentials)).build();
+	        try (BetaAnalyticsDataClient analyticsData = BetaAnalyticsDataClient.create(settings)) {
+	        	
+	            RunReportRequest request = RunReportRequest.newBuilder()
+	                .setProperty("properties/" + propertyId)
+	                .addDateRanges(DateRange.newBuilder().setStartDate(startDate.toString()).setEndDate(endDate.toString()))
+	                .addDimensions(Dimension.newBuilder().setName("date"))
+	                .addMetrics(Metric.newBuilder().setName("active7DayUsers"))
+	                .addMetrics(Metric.newBuilder().setName("averageSessionDuration"))
+	                .addMetrics(Metric.newBuilder().setName("newUsers"))
+	                .addMetrics(Metric.newBuilder().setName("screenPageViews"))
+	                .addOrderBys(OrderBy.newBuilder()
+	                        .setDimension(OrderBy.DimensionOrderBy.newBuilder()
+	                            .setDimensionName("date")
+	                            .setOrderType(OrderBy.DimensionOrderBy.OrderType.ALPHANUMERIC)
+	                        )
+	                        .setDesc(false)
+	                    )
+	                .build();
+
+	            RunReportResponse response = analyticsData.runReport(request);
+
+	            for (Row row : response.getRowsList()) {
+	            	Map<String, String> data = new HashMap<>();
+	            	data.put("date", row.getDimensionValues(0).getValue());
+	                data.put("active7DayUsers", row.getMetricValues(0).getValue());
+	                data.put("averageSessionDuration", row.getMetricValues(1).getValue());
+	                data.put("newUsers", row.getMetricValues(2).getValue());
+	                data.put("screenPageViews", row.getMetricValues(3).getValue());
+	                analyticsDataList.add(data);
+	            }
+	            
+	        }
+	        return analyticsDataList;
+	    }
 	
 	//-----------------------------------------------------------------------------------------
 	//회원관리
