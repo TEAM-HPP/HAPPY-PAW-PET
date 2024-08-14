@@ -7,10 +7,11 @@ body {
 
 section {
   text-align: center; background-color:  #FAF7F0;
-  width: 100%; min-height: 1200px; padding-bottom: 200px;
+  width: 100%; min-height: auto; padding-bottom: 200px;
 }
 
 #blank1{width: 100%; height: 100px; position: relative;}
+
 #main{position: relative; width: 100%; box-sizing: border-box;}
 
 .subbanner { position: relative; width: 100%; height: 350px; background: url('/image/back22.jpg') no-repeat 0 -400px;
@@ -137,17 +138,26 @@ td {
   border-left: hidden;
   border-right: hidden;
 }
-.page-num { display: flex;
-  margin-top: 30px;
+.page-num { 
+  display: flex;
   position: relative;
-  top: 60px;
   justify-content: center;
+  top: 100px;
+  margin-top: 30px;
 }
 .page-num li {
-  width: 36px; height: 35px;
+  width: 36px; 
+  height: 35px;
   padding: 0;
   text-align: center;
 }
+
+.page-num li a{
+	display:block;
+	width: 36px;
+  	height: 35px;
+}
+
 .first {
   background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_first.png) no-repeat;
 }
@@ -156,19 +166,32 @@ td {
 }
 .num {
   height: 33px !important;
-  margin-left: 3px;
-  margin-right: 3px;
-  background-color: black;
-  color: white;
-}
-.MyNum {
-  border: 1px solid black;;
+  margin-right: 8px;
+  border: 1px white solid;
   background-color: white;
-  color: black;
 }
+
+.myNum {
+  border: 1px #333 solid;
+  background-color: #333;
+  color:white;
+  
+}
+
+.num > a {
+  position: relative;
+  display:block;
+  width: 36px;
+  height: 35px;
+  top: 2px;
+  color: black;
+  font-weight: 550;
+}
+
 .num > div {
   position: relative;
   top: 2px;
+  font-weight: 550;
 }
 .next {
   background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_next.png) no-repeat;
@@ -176,24 +199,29 @@ td {
 .last {
   background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_last.png) no-repeat;
 }
+
+
 #blank {
-	width: 90%; height: 30px; position: relative; top: 60px;
+	width: 100%; height: 30px; position: relative; top: 100px;
 }
+
 .write {
   display: block;
-  position: relative; right: 70px;
+  position: relative; 
+  top: 100px; right: 100px;
   float: right;
   width: 120px;
   height: 50px;
   line-height: 50px;
   border: 2px black solid;
   background-color: black;
+  
 }
 .write > a {
 	cursor: pointer;
-	display: block;
+	display: inline-block;
 	color: white;
- 	font-weight: 500;
+ 	font-weight: 600;
  	width: 120px;
     height: 50px;
 }

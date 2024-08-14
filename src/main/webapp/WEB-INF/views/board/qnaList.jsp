@@ -106,48 +106,49 @@
 		    </table>
 		    <ul class="page-num">
 		  
-		    <!-- first -->
-		    <c:if test="${map.page>1}">
-		    	<a href="qnaList?page=${map.startPage}"><li class="first"></li></a>
-		    </c:if>
-
-		    <c:if test="${map.page<=1}">
-		    	<li class="first"></li>
-		    </c:if>
-		   
-		    <!-- prev -->
-		    <c:if test = "${map.page<=1 }">
-		      <li class="prev"></li>
-		    </c:if>
-		    <c:if test = "${map.page>1 }">
-		    	<a href="qnaList?page=${map.page-1}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}"><li class="prev"></li></a>
-		    </c:if>
-		   
-		    <c:forEach var="i" begin="${map.startPage }" end="${map.endPage }" step="1">
-		    	<c:if test="${map.page == i}">
-		    		<li class="MyNum num"><div>${i}</div></li>
-		    	</c:if>
-		    	<c:if test="${map.page != i}">
-		    	 	<a href="qnaList?page=${i}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}"><li class="num"><div>${i}</div></li></a>
-		    	 </c:if>
-		    </c:forEach>
-		   
-		    <!-- next 부분 -->
-		    <c:if test="${map.page<map.maxPage}">
-		    	<a href="qnaList?page=${map.page+1}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}"><li class="next"></li></a>
-		    </c:if>
-		    <c:if test="${map.page>=map.maxPage}">
-		    	<li class="next"></li>
-		    </c:if>
-		   
-		    <!-- last -->
-	 		<c:if test="${map.page<map.maxPage}">
-		    	<a href="qnaList?page=${map.maxPage}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}"><li class="last"></li></a>
-		    </c:if>
-		    <c:if test="${map.page>=map.maxPage}">
-		    	<li class="last"></li>
-		    </c:if>
-		    </ul>
+			    <!-- first -->
+			    <c:if test="${map.page>1}">
+			    	<a href="qnaList?page=${map.startPage}"><li class="first"></li></a>
+			    </c:if>
+	
+			    <c:if test="${map.page<=1}">
+			    	<li class="first"></li>
+			    </c:if>
+			   
+			    <!-- prev -->
+			    <c:if test = "${map.page<=1 }">
+			      <li class="prev"></li>
+			    </c:if>
+			    <c:if test = "${map.page>1 }">
+			    	<li class="prev"><a href="qnaList?page=${map.page-1}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}"></a></li>
+			    </c:if>
+			   
+			    <c:forEach var="i" begin="${map.startPage }" end="${map.endPage }" step="1">
+			    	<c:if test="${map.page == i}">
+			    		<li class="myNum num"><div>${i}</div></li>
+			    	</c:if>
+			    	<c:if test="${map.page != i}">
+			    	 	<li class="num"><a href="qnaList?page=${i}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}">${i}</a></li>
+			    	 </c:if>
+			    </c:forEach>
+			   
+			    <!-- next 부분 -->
+			    <c:if test="${map.page<map.maxPage}">
+			    	<li class="next"><a href="qnaList?page=${map.page+1}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}"></a></li>
+			    </c:if>
+			    <c:if test="${map.page>=map.maxPage}">
+			    	<li class="next"></li>
+			    </c:if>
+			   
+			    <!-- last -->
+		 		<c:if test="${map.page<map.maxPage}">
+			    	<li class="last"><a href="qnaList?page=${map.maxPage}&category=${map.category}&searchWord=${map.searchWord}&qna=${map.qna}&id=${map.id}"></a></li>
+			    </c:if>
+			    <c:if test="${map.page>=map.maxPage}">
+			    	<li class="last"></li>
+			    </c:if>
+	    	</ul>
+	    	<!-- ------------------------------------------------------------------- -->
 			<div id="blank"></div>
 	    	<div class="write"><a href="#" onclick="wBtn()">질문하기</a></div>
     	</div>

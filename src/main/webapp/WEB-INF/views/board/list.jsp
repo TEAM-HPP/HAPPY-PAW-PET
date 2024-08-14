@@ -139,14 +139,9 @@
 		    </ul>
 		    <!-- ----------------------------------------------------------- -->
 			<div id="blank"></div>
-			<c:choose>
-			    <c:when test="${sessionId == 'admin01'}">
-			    	<div class="write"><a href="/board/write" onclick="wBtn">쓰기</a></div>
-			    </c:when>
-			    <c:otherwise>
-			    	<div class="write" style="display: none;"><a href="#" onclick="wBtn">쓰기</a></div>
-	            </c:otherwise>
-			</c:choose>
+			<c:if test="${sessionId == 'admin01'}">
+		    	<div class="write"><a href="/board/write" onclick="wBtn">쓰기</a></div>
+			</c:if>
 		</div>
 	 </section>
 	 <!-- ----------------------------------------------------------------- -->

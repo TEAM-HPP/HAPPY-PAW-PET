@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Q&A view</title>
+	<title>NOTICE view</title>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 	<link rel="stylesheet" href="/css/top.css">
@@ -140,14 +140,6 @@
 						} else {
 							console.error('폼 요소를 찾을 수 없습니다.');
 						}
-					} else {
-						return false;
-					}
-				}
-				//---------------------------------------------------------
-				function cmBtn() {
-					if (confirm("댓글을 수정하시겠습니까?")) {
-
 					} else {
 						return false;
 					}

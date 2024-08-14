@@ -39,7 +39,7 @@
 	        <tr>
 	          <th>선택</th>
 	          <td>
-	          	<input type="hidden" name="topchk" id="topchk" value="" required/>
+	          	<input type="hidden" name="topchk" id="topchk" value="0" required/>
 	            <select name="topck_select">
 					<option value="0" >선택안함</option>
 					<option value="1">상위노출</option>
