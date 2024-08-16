@@ -13,6 +13,13 @@
 		<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<title>HappyPawPet</title>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-00CXGT1Y2K');
+		</script>
 	</head>
 	<!--  ---------------------------------------------------------------------------->
 	<body >

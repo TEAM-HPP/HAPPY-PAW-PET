@@ -36,6 +36,13 @@
             padding-right:0 !important;
         }
     </style>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-00CXGT1Y2K');
+    </script>
 </head>
 <body>
 <header>

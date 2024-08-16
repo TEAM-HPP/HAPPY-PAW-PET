@@ -12,6 +12,13 @@
     <link rel="stylesheet" type="text/css" href="/css/footer.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-00CXGT1Y2K');
+    </script>
+    <script>
         function fetchSigungu(uprCd) {
             if (uprCd === "") {
                 document.getElementById("sigungu").innerHTML = "<option value=''>시군구 선택</option>";
