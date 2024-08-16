@@ -139,7 +139,7 @@
 					<dt>
 					</dt>
 					<dd>
-						<img id="preview"/>
+						<img id="preview" src="/image/noimage.jpg"/>
 					</dd>
 				</dl>
 			</fieldset>

@@ -232,11 +232,12 @@
 					</dl>
 					<dl id="birth">
 						<dt>
+							<div></div>
 							<label for="birth_year">생년월일</label>
 						</dt>
 						<dd>
 							<input type="date" id="birth_year" name="birth_year"
-								max="2024-12-31" min="1930-01-01" onchange="dBtn()" />
+								max="2024-12-31" min="1930-01-01" onchange="dBtn()" required/>
 							<div id="type">
 								<input type="radio" name="calendar" id="lunar" value="lunar" checked="checked" /> 
 									<label for="lunar">양력</label> 

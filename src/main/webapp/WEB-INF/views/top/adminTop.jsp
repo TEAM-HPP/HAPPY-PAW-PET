@@ -17,7 +17,7 @@
 					<ul>
 						<li><a href="/index" id="q01">Home</a></li>
 						<li><a href="/admin/member" id="q02">회원관리</a></li>
-						<li><a href="#" id="q03">진단내역</a></li>
+						<li><a href="/admin/eyediagnosis" id="q03">진단내역</a></li>
 						<li><a href="/admin/pet" id="q04">반려동물관리</a></li>
 						<li><a href="/admin/board" id="q05">게시판</a></li>
 					</ul>

@@ -74,10 +74,8 @@ public class AdoptController {
 	public Map<String, Integer> likeOn(@RequestParam("id") String id, @RequestParam("bno") int bno) {
 		adlikelistService.likeOn(id, bno);
 
-		// Fetch the updated like count
 		int updatedLikeCount = adlikelistService.selectLikeCountByBno(bno);
 
-		// Return the updated like count in JSON format
 		Map<String, Integer> response = new HashMap<>();
 		response.put("likeCount", updatedLikeCount);
 
@@ -89,10 +87,8 @@ public class AdoptController {
 	public Map<String, Integer> likeOff(@RequestParam("id") String id, @RequestParam("bno") int bno) {
 		adlikelistService.likeOff(id, bno);
 
-		// Fetch the updated like count
 		int updatedLikeCount = adlikelistService.selectLikeCountByBno(bno);
 
-		// Return the updated like count in JSON format
 		Map<String, Integer> response = new HashMap<>();
 		response.put("likeCount", updatedLikeCount);
 

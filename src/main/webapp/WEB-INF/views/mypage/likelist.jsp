@@ -73,7 +73,7 @@
 		<div id="main">
 	        <h1> 내가 좋아요한 게시글 </h1>
 	        <div class="ad_title">
-	        	${sessionId }님이 좋아요를 누른 게시글을 한 번에 모아보세요!<br>
+	        	${sessionName }님이 좋아요를 누른 게시글을 한 번에 모아보세요!<br>
         	</div>
         	<div class="wrapper">
 	        	<form action="/mypage/likelist" name="review" method="post" enctype="multipart/form-data">
